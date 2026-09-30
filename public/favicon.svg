@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="14" fill="#090A0C"/>
+  <rect x="2" y="2" width="60" height="60" rx="12" stroke="#222328" stroke-width="2"/>
+  <!-- Circuit node / backend server graphic in Hot Pink (#FF056D) -->
+  <path d="M18 20L32 12L46 20V44L32 52L18 44V20Z" stroke="#FF056D" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M18 20L32 28L46 20" stroke="#FF056D" stroke-width="2.5"/>
+  <path d="M32 28V52" stroke="#FF056D" stroke-width="2.5"/>
+  <circle cx="32" cy="28" r="3" fill="#FF056D"/>
+  <!-- Stylized SS monogram in Warm White (#F4EFE6) -->
+  <text x="32" y="42" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" fill="#F4EFE6" text-anchor="middle" letter-spacing="1">SS</text>
+</svg>
