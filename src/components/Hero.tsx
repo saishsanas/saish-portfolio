@@ -5,9 +5,10 @@ import { useAudioFx } from '../hooks/useAudioFx'
 
 interface HeroProps {
   onOpenResume: () => void
+  onNavigateWork?: () => void
 }
 
-export function Hero({ onOpenResume }: HeroProps) {
+export function Hero({ onOpenResume, onNavigateWork }: HeroProps) {
   const { playClick, playHover } = useAudioFx()
   const [timeString, setTimeString] = useState('')
 
@@ -32,9 +33,13 @@ export function Hero({ onOpenResume }: HeroProps) {
 
   const scrollToWork = () => {
     playClick()
-    const element = document.getElementById('work')
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+    if (onNavigateWork) {
+      onNavigateWork()
+    } else {
+      const element = document.getElementById('work')
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
     }
   }
 

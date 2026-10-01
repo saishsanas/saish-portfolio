@@ -1,11 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-  <rect width="64" height="64" rx="14" fill="#090A0C"/>
-  <rect x="2" y="2" width="60" height="60" rx="12" stroke="#222328" stroke-width="2"/>
-  <!-- Circuit node / backend server graphic in Hot Pink (#FF056D) -->
-  <path d="M18 20L32 12L46 20V44L32 52L18 44V20Z" stroke="#FF056D" stroke-width="2.5" stroke-linejoin="round"/>
-  <path d="M18 20L32 28L46 20" stroke="#FF056D" stroke-width="2.5"/>
-  <path d="M32 28V52" stroke="#FF056D" stroke-width="2.5"/>
-  <circle cx="32" cy="28" r="3" fill="#FF056D"/>
-  <!-- Stylized SS monogram in Warm White (#F4EFE6) -->
-  <text x="32" y="42" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" fill="#F4EFE6" text-anchor="middle" letter-spacing="1">SS</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <rect width="32" height="32" rx="7" fill="#090A0C"/>
+  <rect x="1" y="1" width="30" height="30" rx="6" fill="none" stroke="#202126" stroke-width="1.5"/>
+  <!-- Geometric SS Monogram in Hot Pink -->
+  <path d="M14 9H8C6.9 9 6 9.9 6 11V13C6 14.1 6.9 15 8 15H12C13.1 15 14 15.9 14 17V19C14 20.1 13.1 21 12 21H6" fill="none" stroke="#FF056D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M26 9H20C18.9 9 18 9.9 18 11V13C18 14.1 18.9 15 20 15H24C25.1 15 26 15.9 26 17V19C26 20.1 25.1 21 24 21H18" fill="none" stroke="#FF056D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

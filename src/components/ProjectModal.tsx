@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ArrowUpRight, CheckCircle2, Smartphone, GitBranch } from 'lucide-react'
 import { GithubIcon } from './SocialIcons'
@@ -11,6 +12,18 @@ interface ProjectModalProps {
 
 export function ProjectModal({ project, onClose }: ProjectModalProps) {
   const { playClick, playHover } = useAudioFx()
+
+  useEffect(() => {
+    if (!project) return
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.preventDefault()
+        onClose()
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [project, onClose])
 
   if (!project) return null
 

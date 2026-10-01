@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Printer, Copy, Check, ShieldCheck, BookOpen, GraduationCap, Mail, Phone, MapPin, Briefcase, Cpu } from 'lucide-react'
 import { GithubIcon, LinkedinIcon } from './SocialIcons'
@@ -12,6 +12,18 @@ interface ResumeModalProps {
 export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
   const { playClick, playSuccess } = useAudioFx()
   const [copied, setCopied] = useState(false)
+
+  useEffect(() => {
+    if (!isOpen) return
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.preventDefault()
+        onClose()
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [isOpen, onClose])
 
   if (!isOpen) return null
 

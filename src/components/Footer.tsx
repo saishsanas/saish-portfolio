@@ -1,11 +1,18 @@
 import { ArrowUp } from 'lucide-react'
 import { useAudioFx } from '../hooks/useAudioFx'
 
-export function Footer() {
+interface FooterProps {
+  onNavigatePanel?: (panelIndex: number) => void
+}
+
+export function Footer({ onNavigatePanel }: FooterProps) {
   const { playClick, playHover } = useAudioFx()
 
   const scrollToTop = () => {
     playClick()
+    if (onNavigatePanel) {
+      onNavigatePanel(0)
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 

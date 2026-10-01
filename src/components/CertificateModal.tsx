@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ShieldCheck, Download, ExternalLink, ArrowUpRight } from 'lucide-react'
 import { Credential } from '../types'
@@ -10,6 +11,18 @@ interface CertificateModalProps {
 
 export function CertificateModal({ credential, onClose }: CertificateModalProps) {
   const { playClick } = useAudioFx()
+
+  useEffect(() => {
+    if (!credential) return
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.preventDefault()
+        onClose()
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [credential, onClose])
 
   if (!credential) return null
 

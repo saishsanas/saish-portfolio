@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ExternalLink, FileText, Award } from 'lucide-react'
 import { useAudioFx } from '../hooks/useAudioFx'
@@ -17,6 +18,18 @@ interface PublicationLightboxModalProps {
 
 export function PublicationLightboxModal({ data, onClose }: PublicationLightboxModalProps) {
   const { playClick } = useAudioFx()
+
+  useEffect(() => {
+    if (!data) return
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.preventDefault()
+        onClose()
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [data, onClose])
 
   if (!data) return null
 
