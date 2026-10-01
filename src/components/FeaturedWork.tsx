@@ -221,18 +221,18 @@ export function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
                 {/* Left Column (7 cols): Recruiter Structured Breakdown & CTAs */}
                 <div className="lg:col-span-7 space-y-6">
                   {/* Top Header Row */}
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <span className="font-mono text-xs font-bold text-[#FF056D] tracking-widest">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                      <span className="font-mono text-xs font-bold text-[#FF056D] tracking-widest shrink-0">
                         PROJECT // {activeProject.number}
                       </span>
-                      <span className="text-[#5E5D66]">/</span>
+                      <span className="text-[#5E5D66] hidden sm:inline">/</span>
                       <span className="font-mono text-xs text-[#8E8A94] uppercase flex items-center gap-1.5">
                         {activeProject.isMobileApp && <Smartphone className="w-3.5 h-3.5 text-[#FF056D]" />}
                         {activeProject.category}
                       </span>
                     </div>
-                    <span className="font-mono text-xs text-[#8E8A94] px-2.5 py-0.5 rounded bg-white/5 border border-white/5">
+                    <span className="font-mono text-xs text-[#8E8A94] px-2.5 py-0.5 rounded bg-white/5 border border-white/5 shrink-0">
                       {activeProject.status}
                     </span>
                   </div>
@@ -292,7 +292,7 @@ export function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
                         onSelectProject(activeProject)
                       }}
                       data-cursor="CASE STUDY"
-                      className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#FF056D] hover:bg-[#D9045D] text-[#090A0C] font-mono text-xs font-bold tracking-wider uppercase transition-all shadow-md shadow-[#FF056D]/20 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF056D]"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#FF056D] hover:bg-[#D9045D] text-[#090A0C] font-mono text-xs font-bold tracking-wider uppercase transition-all shadow-md shadow-[#FF056D]/20 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF056D] touch-manipulation"
                     >
                       <span>EXPLORE CASE STUDY</span>
                       <ChevronRight className="w-4 h-4 text-[#090A0C]" />
@@ -304,7 +304,7 @@ export function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
                       rel="noopener noreferrer"
                       onClick={playClick}
                       data-cursor="GITHUB"
-                      className="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-[#15161A] hover:bg-[#1D1E24] border border-white/10 text-[#8E8A94] hover:text-[#F4EFE6] font-mono text-xs font-semibold tracking-wider uppercase transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF056D]"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl bg-[#15161A] hover:bg-[#1D1E24] border border-white/10 text-[#8E8A94] hover:text-[#F4EFE6] font-mono text-xs font-semibold tracking-wider uppercase transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF056D] touch-manipulation"
                     >
                       <GithubIcon className="w-4 h-4" />
                       <span>VIEW REPOSITORY ↗</span>
@@ -319,7 +319,7 @@ export function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
                           rel="noopener noreferrer"
                           onClick={playClick}
                           data-cursor="REPO"
-                          className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-[11px] font-mono text-[#8E8A94] hover:text-[#F4EFE6] transition-colors"
+                          className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-[11px] font-mono text-[#8E8A94] hover:text-[#F4EFE6] transition-colors touch-manipulation"
                         >
                           <span>{sublink.label}</span>
                         </a>

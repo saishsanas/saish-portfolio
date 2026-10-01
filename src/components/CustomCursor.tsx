@@ -21,6 +21,12 @@ export function CustomCursor() {
 
     const handleMediaChange = (e: MediaQueryListEvent) => {
       setIsPointerFine(e.matches)
+      if (!e.matches) {
+        document.body.classList.remove('has-custom-cursor')
+        setIsVisible(false)
+      } else {
+        document.body.classList.add('has-custom-cursor')
+      }
     }
     media.addEventListener('change', handleMediaChange)
 
@@ -31,6 +37,14 @@ export function CustomCursor() {
     }
 
     const handleMouseLeave = () => {
+      setIsVisible(false)
+    }
+
+    const handleWindowBlur = () => {
+      setIsVisible(false)
+    }
+
+    const handleTouchStart = () => {
       setIsVisible(false)
     }
 
@@ -53,9 +67,11 @@ export function CustomCursor() {
       }
     }
 
-    window.addEventListener('mousemove', handleMouseMove)
+    window.addEventListener('mousemove', handleMouseMove, { passive: true })
     document.addEventListener('mouseleave', handleMouseLeave)
-    document.addEventListener('mouseover', handleMouseOver)
+    window.addEventListener('blur', handleWindowBlur)
+    window.addEventListener('touchstart', handleTouchStart, { passive: true })
+    document.addEventListener('mouseover', handleMouseOver, { passive: true })
 
     if (media.matches) {
       document.body.classList.add('has-custom-cursor')
@@ -65,6 +81,8 @@ export function CustomCursor() {
       media.removeEventListener('change', handleMediaChange)
       window.removeEventListener('mousemove', handleMouseMove)
       document.removeEventListener('mouseleave', handleMouseLeave)
+      window.removeEventListener('blur', handleWindowBlur)
+      window.removeEventListener('touchstart', handleTouchStart)
       document.removeEventListener('mouseover', handleMouseOver)
       document.body.classList.remove('has-custom-cursor')
     }
@@ -73,7 +91,7 @@ export function CustomCursor() {
   if (!isPointerFine || !isVisible) return null
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-50 overflow-hidden">
+    <div className="pointer-events-none fixed inset-0 z-[99999] overflow-hidden select-none">
       {/* Outer Spring Ring with Hot Pink (#FF056D) Accent */}
       <motion.div
         className="fixed top-0 left-0 flex items-center justify-center rounded-full pointer-events-none transition-colors duration-200"

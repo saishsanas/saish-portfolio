@@ -175,7 +175,7 @@ export function Hero({ onOpenResume, onNavigateWork }: HeroProps) {
                 onClick={scrollToWork}
                 onMouseEnter={playHover}
                 data-cursor="EXPLORE"
-                className="group relative inline-flex items-center gap-3 px-7 py-4 rounded-xl bg-[#FF056D] hover:bg-[#D9045D] text-[#090A0C] font-mono text-sm font-bold tracking-wider uppercase transition-all shadow-xl shadow-[#FF056D]/20 active:scale-95"
+                className="w-full sm:w-auto group relative inline-flex items-center justify-center gap-3 px-7 py-4 rounded-xl bg-[#FF056D] hover:bg-[#D9045D] text-[#090A0C] font-mono text-sm font-bold tracking-wider uppercase transition-all shadow-xl shadow-[#FF056D]/20 active:scale-95 touch-manipulation"
               >
                 <span>VIEW WORK ↗</span>
                 <div className="w-6 h-6 rounded-full bg-black/20 flex items-center justify-center group-hover:translate-y-0.5 transition-transform">
@@ -191,7 +191,7 @@ export function Hero({ onOpenResume, onNavigateWork }: HeroProps) {
                 }}
                 onMouseEnter={playHover}
                 data-cursor="RESUME"
-                className="inline-flex items-center gap-2.5 px-6 py-4 rounded-xl bg-[#15161A] hover:bg-[#1D1E24] border border-[#202126] hover:border-[#FF056D]/50 text-[#F4EFE6] font-mono text-sm font-semibold tracking-wider uppercase transition-all active:scale-95"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-xl bg-[#15161A] hover:bg-[#1D1E24] border border-[#202126] hover:border-[#FF056D]/50 text-[#F4EFE6] font-mono text-sm font-semibold tracking-wider uppercase transition-all active:scale-95 touch-manipulation"
               >
                 <FileText className="w-4 h-4 text-[#FF056D]" />
                 <span>EXAMINE RESUME ↗</span>

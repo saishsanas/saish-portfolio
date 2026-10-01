@@ -57,9 +57,19 @@ export function Credentials({ onSelectCredential }: CredentialsProps) {
                 <div>
                   {/* Top Bar with Icon & Status */}
                   <div className="flex items-center justify-between mb-6">
-                    <div className="w-12 h-12 rounded-xl bg-[#17181D] border border-white/10 flex items-center justify-center text-[#FF056D] group-hover:scale-110 transition-transform">
-                      <Icon className="w-6 h-6" />
-                    </div>
+                    {cred.id === 'oci-2025' && cred.certificateImage ? (
+                      <div className="w-14 h-14 rounded-2xl bg-[#17181D] border border-[#FF056D]/30 p-1 flex items-center justify-center group-hover:scale-105 transition-transform overflow-hidden shadow-md">
+                        <img
+                          src={cred.certificateImage}
+                          alt="Oracle Badge"
+                          className="w-full h-full object-contain rounded-xl"
+                        />
+                      </div>
+                    ) : (
+                      <div className="w-12 h-12 rounded-xl bg-[#17181D] border border-white/10 flex items-center justify-center text-[#FF056D] group-hover:scale-110 transition-transform">
+                        <Icon className="w-6 h-6" />
+                      </div>
+                    )}
 
                     <span className="font-mono text-[10px] text-[#FF056D] bg-[#FF056D]/10 border border-[#FF056D]/30 px-2 py-0.5 rounded flex items-center gap-1 font-bold">
                       <CheckCircle className="w-3 h-3 text-[#FF056D]" />
@@ -98,21 +108,42 @@ export function Credentials({ onSelectCredential }: CredentialsProps) {
                     </div>
                   )}
 
-                  {/* Certificate preview modal trigger if certificate image is present */}
-                  {cred.certificateImage && (
-                    <button
-                      onClick={() => {
-                        playClick()
-                        onSelectCredential?.(cred)
-                      }}
-                      onMouseEnter={playHover}
-                      data-cursor="CERTIFICATE"
-                      className="w-full mt-2 inline-flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-[#FF056D]/10 hover:bg-[#FF056D] text-[#FF056D] hover:text-[#F4EFE6] border border-[#FF056D]/30 font-mono text-[11px] font-bold uppercase tracking-wider transition-all"
-                    >
-                      <Eye className="w-3.5 h-3.5" />
-                      <span>VIEW CERTIFICATE ↗</span>
-                    </button>
-                  )}
+                  {/* Actions: Verify Link & Certificate Preview Modal */}
+                  <div className="space-y-2 pt-1">
+                    {cred.verifyUrl && (
+                      <a
+                        href={cred.verifyUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={playClick}
+                        onMouseEnter={playHover}
+                        data-cursor="VERIFY"
+                        className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg bg-[#FF056D] hover:bg-[#D9045D] text-[#090A0C] font-mono text-[11px] font-bold uppercase tracking-wider transition-all shadow-md shadow-[#FF056D]/20"
+                      >
+                        <ExternalLink className="w-3.5 h-3.5" />
+                        <span>VERIFY CREDENTIAL ↗</span>
+                      </a>
+                    )}
+
+                    {cred.certificateImage && (
+                      <button
+                        onClick={() => {
+                          playClick()
+                          onSelectCredential?.(cred)
+                        }}
+                        onMouseEnter={playHover}
+                        data-cursor={cred.type === 'DEGREE' ? 'DOCUMENT' : 'CERTIFICATE'}
+                        className={`w-full inline-flex items-center justify-center gap-2 py-2 px-3 rounded-lg ${
+                          cred.verifyUrl
+                            ? 'bg-white/5 hover:bg-white/10 text-[#F4EFE6] border border-white/10'
+                            : 'bg-[#FF056D]/10 hover:bg-[#FF056D] text-[#FF056D] hover:text-[#090A0C] border border-[#FF056D]/30'
+                        } font-mono text-[11px] font-bold uppercase tracking-wider transition-all`}
+                      >
+                        <Eye className="w-3.5 h-3.5" />
+                        <span>{cred.type === 'DEGREE' ? 'VIEW DEGREE PREVIEW' : 'VIEW ARTWORK'} ↗</span>
+                      </button>
+                    )}
+                  </div>
                 </div>
               </motion.div>
             )

@@ -76,21 +76,27 @@ TECHNICAL SKILLS
 • Tools & Platforms: Git & GitHub, Docker, IntelliJ IDEA, VS Code, Postman, Oracle Cloud Infrastructure (OCI)
 
 FEATURED PROJECTS
-1. Chronos — Distributed Temporal State Reconstruction Engine
-   Repository: https://github.com/saishsanas/chronos
-   Stack: Java 21, Spring Boot, PostgreSQL, Apache Kafka, Temporal Slices, Event Sourcing
-   • Engineered deterministic temporal state engine reconstructing point-in-time entity models from immutable event logs.
-   • Implemented bi-temporal indexing strategy in PostgreSQL and event replay pipelines processing 10,000+ events/sec.
-   • Replaced destructive SQL UPDATE mutations with immutable append-only event streams and automated audit trails.
-
-2. CareWave — Emergency Distress & Assistance Mobile Application (In Progress)
+1. CareWave — Emergency Distress & Assistance Mobile Application (In Progress)
    Repository: https://github.com/saishsanas/CareWave
    Stack: React Native (Expo), Spring Boot 3.5.13, Java 21, MySQL, STOMP/WebSockets, Firebase Cloud Messaging (FCM), Kafka, Redis/Valkey
    • Engineered low-latency mobile distress dispatch backend delivering sub-500ms SOS broadcast delivery.
    • Implemented persistent WebSocket/STOMP bidirectional duplex channels with heartbeat failover.
    • Designed relational schema with spatial index structures for high-speed nearest-responder Euclidean queries.
 
-3. SaishTask — Full-Stack Task & Workflow Management Platform (Completed)
+2. Chronos — Distributed Temporal State Reconstruction Engine
+   Repository: https://github.com/saishsanas/chronos
+   Stack: Java 21, Spring Boot, PostgreSQL, Apache Kafka, Temporal Slices, Event Sourcing
+   • Engineered deterministic temporal state engine reconstructing point-in-time entity models from immutable event logs.
+   • Implemented bi-temporal indexing strategy in PostgreSQL and event replay pipelines processing 10,000+ events/sec.
+   • Replaced destructive SQL UPDATE mutations with immutable append-only event streams and automated audit trails.
+
+3. OutBox-Sync — Distributed Transactional Outbox Engine (Systems Architecture)
+   Repository: https://github.com/saishsanas/OutBox-Sync-TeamProject
+   Stack: Java 21, Spring Boot, MySQL, Transactional Outbox Pattern, Asynchronous Polling Daemon
+   • Persisted domain mutations and outbox records in a single local ACID transaction, eliminating dual-write inconsistencies.
+   • Implemented lockless asynchronous polling daemon using SELECT FOR UPDATE SKIP LOCKED to prevent duplicate pickups across replicas.
+
+4. SaishTask — Full-Stack Task & Workflow Management Platform (Completed)
    Repositories:
    - Combined Repo: https://github.com/saishsanas/saish-task-app
    - Backend Source: https://github.com/saishsanas/saish-task-backend
@@ -98,13 +104,7 @@ FEATURED PROJECTS
    Stack: Java 21, Spring Boot, Spring Data JPA, Hibernate, PostgreSQL, React, Vite, TypeScript
    • Built complete multi-tier enterprise task management architecture enforcing strict Controller-Service-Repository boundaries.
    • Engineered optimistic concurrency control (@Version) and global exception isolation via @ControllerAdvice.
-   • Implemented normalized PostgreSQL schema ensuring zero-drift transactional integrity.
-
-4. OutBox-Sync — Distributed Transactional Outbox Engine (Systems Architecture)
-   Repository: https://github.com/saishsanas/OutBox-Sync-TeamProject
-   Stack: Java 21, Spring Boot, MySQL, Transactional Outbox Pattern, Asynchronous Polling Daemon
-   • Persisted domain mutations and outbox records in a single local ACID transaction, eliminating dual-write inconsistencies.
-   • Implemented lockless asynchronous polling daemon using SELECT FOR UPDATE SKIP LOCKED to prevent duplicate pickups across replicas.`
+   • Implemented normalized PostgreSQL schema ensuring zero-drift transactional integrity.`
 
     navigator.clipboard.writeText(resumeText)
     setCopied(true)
@@ -113,107 +113,130 @@ FEATURED PROJECTS
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
-        {/* Backdrop */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={onClose}
-          className="fixed inset-0 bg-black/85 backdrop-blur-md"
-        />
+      {isOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+          {/* Backdrop */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            className="fixed inset-0 bg-black/85 backdrop-blur-md"
+          />
 
-        {/* Modal Window */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.95, y: 20 }}
-          transition={{ duration: 0.25 }}
-          className="relative w-full max-w-4xl max-h-[92vh] flex flex-col rounded-3xl bg-[#0D0E12] border border-white/20 shadow-2xl overflow-hidden z-10 my-auto"
-        >
-          {/* Header Action Bar */}
-          <div className="flex items-center justify-between px-6 py-4 bg-[#14151A] border-b border-white/10 shrink-0">
-            <div className="flex items-center gap-2">
-              <span className="font-mono text-xs font-bold text-[#FF056D] tracking-wider uppercase">
-                // CURRICULUM VITAE PREVIEW
-              </span>
-              <span className="text-[#5E5B56]">|</span>
-              <span className="font-mono text-xs text-[#F4EFE6]">SAISH_SANAS_RESUME.pdf</span>
+          {/* Modal Window */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            transition={{ duration: 0.25 }}
+            className="relative w-full max-w-4xl max-h-[92vh] flex flex-col rounded-3xl bg-[#0D0E12] border border-white/20 shadow-2xl overflow-hidden z-10 my-auto"
+          >
+            {/* Header Action Bar */}
+            <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4 bg-[#14151A] border-b border-white/10 shrink-0 gap-2">
+              <div className="flex items-center gap-2 min-w-0 flex-1 overflow-hidden">
+                <span className="font-mono text-xs font-bold text-[#FF056D] tracking-wider uppercase shrink-0">
+                  // CV PREVIEW
+                </span>
+                <span className="text-[#5E5B56] hidden sm:inline">|</span>
+                <span className="font-mono text-xs text-[#F4EFE6] truncate hidden sm:inline">SAISH_SANAS_RESUME.pdf</span>
+              </div>
+
+              <div className="flex items-center gap-2 shrink-0">
+                <button
+                  onClick={handleCopyText}
+                  className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-xs font-mono text-[#8E8A94] hover:text-[#F4EFE6] transition-all"
+                  title="Copy Resume as Text"
+                >
+                  {copied ? <Check className="w-3.5 h-3.5 text-[#FF056D]" /> : <Copy className="w-3.5 h-3.5" />}
+                  <span>{copied ? 'COPIED' : 'COPY TEXT'}</span>
+                </button>
+
+                <button
+                  onClick={handlePrint}
+                  data-cursor="PRINT"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#FF056D] hover:bg-[#B8004C] text-xs font-mono font-bold text-[#F4EFE6] transition-all shadow-md shadow-[#FF056D]/20 touch-manipulation"
+                  title="Print or Save PDF"
+                >
+                  <Printer className="w-3.5 h-3.5" />
+                  <span className="hidden xs:inline">PRINT / SAVE</span>
+                  <span className="xs:hidden">PDF</span>
+                </button>
+
+                <button
+                  onClick={onClose}
+                  data-cursor="CLOSE"
+                  className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-[#8E8A94] hover:text-[#F4EFE6] transition-colors touch-manipulation ml-1"
+                  aria-label="Close modal"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
             </div>
-
-            <div className="flex items-center gap-2">
-              <button
-                onClick={handleCopyText}
-                className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-xs font-mono text-[#8E8A94] hover:text-[#F4EFE6] transition-all"
-                title="Copy Resume as Text"
-              >
-                {copied ? <Check className="w-3.5 h-3.5 text-[#FF056D]" /> : <Copy className="w-3.5 h-3.5" />}
-                <span>{copied ? 'COPIED' : 'COPY TEXT'}</span>
-              </button>
-
-              <button
-                onClick={handlePrint}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#FF056D] hover:bg-[#B8004C] text-xs font-mono font-bold text-[#F4EFE6] transition-all shadow-md shadow-[#FF056D]/20"
-                title="Print or Save PDF"
-              >
-                <Printer className="w-3.5 h-3.5" />
-                <span>PRINT / SAVE PDF</span>
-              </button>
-
-              <button
-                onClick={onClose}
-                className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-[#8E8A94] hover:text-[#F4EFE6] transition-colors ml-2"
-                aria-label="Close modal"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-          </div>
 
           {/* Printable & Scrollable Resume Content */}
           <div className="overflow-y-auto p-6 sm:p-10 font-sans text-[#F4EFE6] space-y-8 bg-[#090A0D]">
             {/* Header Info */}
             <div className="border-b border-white/10 pb-6">
-              <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
-                <h1 className="font-display font-extrabold text-3xl sm:text-4xl text-[#F4EFE6] tracking-tight uppercase">
-                  SAISH SANAS
-                </h1>
-                <span className="font-mono text-sm text-[#FF056D] font-bold">
-                  JAVA BACKEND DEVELOPER
-                </span>
-              </div>
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex-1 min-w-0">
+                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+                    <h1 className="font-display font-extrabold text-3xl sm:text-4xl text-[#F4EFE6] tracking-tight uppercase">
+                      SAISH SANAS
+                    </h1>
+                    <span className="font-mono text-sm text-[#FF056D] font-bold">
+                      JAVA BACKEND DEVELOPER
+                    </span>
+                  </div>
 
-              <div className="flex flex-wrap items-center gap-4 mt-4 font-mono text-xs text-[#8E8A94]">
-                <span className="flex items-center gap-1.5 text-[#F4EFE6]/90">
-                  <Phone className="w-3.5 h-3.5 text-[#FF056D]" />
-                  +91-9322546613
-                </span>
-                <span className="flex items-center gap-1.5 text-[#F4EFE6]/90">
-                  <Mail className="w-3.5 h-3.5 text-[#FF056D]" />
-                  saishsanas@gmail.com
-                </span>
-                <span className="flex items-center gap-1.5 text-[#F4EFE6]/90">
-                  <MapPin className="w-3.5 h-3.5 text-[#FF056D]" />
-                  Pune, Maharashtra, India
-                </span>
-                <a
-                  href="https://github.com/saishsanas"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-[#F4EFE6]/90 hover:text-[#FF056D] transition-colors"
-                >
-                  <GithubIcon className="w-3.5 h-3.5" />
-                  GitHub ↗
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/saish-sanas-48932433/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-[#F4EFE6]/90 hover:text-[#FF056D] transition-colors"
-                >
-                  <LinkedinIcon className="w-3.5 h-3.5" />
-                  LinkedIn ↗
-                </a>
+                  <div className="flex flex-wrap items-center gap-4 mt-4 font-mono text-xs text-[#8E8A94]">
+                    <a
+                      href="tel:+919322546613"
+                      className="flex items-center gap-1.5 text-[#F4EFE6]/90 hover:text-[#FF056D] transition-colors"
+                    >
+                      <Phone className="w-3.5 h-3.5 text-[#FF056D]" />
+                      +91-9322546613
+                    </a>
+                    <a
+                      href="mailto:saishsanas@gmail.com"
+                      className="flex items-center gap-1.5 text-[#F4EFE6]/90 hover:text-[#FF056D] transition-colors"
+                    >
+                      <Mail className="w-3.5 h-3.5 text-[#FF056D]" />
+                      saishsanas@gmail.com
+                    </a>
+                    <span className="flex items-center gap-1.5 text-[#F4EFE6]/90">
+                      <MapPin className="w-3.5 h-3.5 text-[#FF056D]" />
+                      Pune, Maharashtra, India
+                    </span>
+                    <a
+                      href="https://github.com/saishsanas"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 text-[#F4EFE6]/90 hover:text-[#FF056D] transition-colors"
+                    >
+                      <GithubIcon className="w-3.5 h-3.5" />
+                      GitHub ↗
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/in/saish-sanas-48932433/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 text-[#F4EFE6]/90 hover:text-[#FF056D] transition-colors"
+                    >
+                      <LinkedinIcon className="w-3.5 h-3.5" />
+                      LinkedIn ↗
+                    </a>
+                  </div>
+                </div>
+
+                <div className="shrink-0 hidden sm:block">
+                  <img
+                    src="/images/saish-photo-passport.jpg"
+                    alt="Saish Sanas - Professional Portrait"
+                    className="w-20 h-24 object-cover rounded-xl border border-white/20 shadow-md grayscale hover:grayscale-0 transition-all duration-300"
+                    loading="lazy"
+                  />
+                </div>
               </div>
             </div>
 
@@ -333,22 +356,7 @@ FEATURED PROJECTS
               </h2>
 
               <div className="space-y-6">
-                {/* Project 1: Chronos */}
-                <div className="border-l-2 border-[#FF056D] pl-4 space-y-1.5">
-                  <div className="flex flex-wrap items-baseline justify-between">
-                    <span className="font-display font-bold text-base text-[#F4EFE6] uppercase">
-                      Chronos — Distributed Temporal State Reconstruction Engine [Active]
-                    </span>
-                    <span className="font-mono text-xs text-[#8E8A94]">Java 21 &bull; Spring Boot &bull; PostgreSQL &bull; Kafka &bull; Event Sourcing</span>
-                  </div>
-                  <ul className="list-disc list-inside text-xs text-[#8E8A94] space-y-1 leading-relaxed">
-                    <li>Engineered deterministic temporal state engine reconstructing historical models from immutable append-only event logs.</li>
-                    <li>Designed PostgreSQL bi-temporal partition schema and high-throughput event replay pipeline capable of &gt;10,000 events/sec.</li>
-                    <li>Guaranteed zero state mutation by replacing destructive SQL updates with immutable event sequencing and cryptographic audit chains.</li>
-                  </ul>
-                </div>
-
-                {/* Project 2: CareWave */}
+                {/* Project 1: CareWave */}
                 <div className="border-l-2 border-[#FF056D] pl-4 space-y-1.5">
                   <div className="flex flex-wrap items-baseline justify-between">
                     <span className="font-display font-bold text-base text-[#F4EFE6] uppercase">
@@ -363,7 +371,36 @@ FEATURED PROJECTS
                   </ul>
                 </div>
 
-                {/* Project 3: SaishTask */}
+                {/* Project 2: Chronos */}
+                <div className="border-l-2 border-[#FF056D] pl-4 space-y-1.5">
+                  <div className="flex flex-wrap items-baseline justify-between">
+                    <span className="font-display font-bold text-base text-[#F4EFE6] uppercase">
+                      Chronos — Distributed Temporal State Reconstruction Engine [Active]
+                    </span>
+                    <span className="font-mono text-xs text-[#8E8A94]">Java 21 &bull; Spring Boot &bull; PostgreSQL &bull; Kafka &bull; Event Sourcing</span>
+                  </div>
+                  <ul className="list-disc list-inside text-xs text-[#8E8A94] space-y-1 leading-relaxed">
+                    <li>Engineered deterministic temporal state engine reconstructing historical models from immutable append-only event logs.</li>
+                    <li>Designed PostgreSQL bi-temporal partition schema and high-throughput event replay pipeline capable of &gt;10,000 events/sec.</li>
+                    <li>Guaranteed zero state mutation by replacing destructive SQL updates with immutable event sequencing and cryptographic audit chains.</li>
+                  </ul>
+                </div>
+
+                {/* Project 3: OutBox-Sync */}
+                <div className="border-l-2 border-[#FF056D] pl-4 space-y-1.5">
+                  <div className="flex flex-wrap items-baseline justify-between">
+                    <span className="font-display font-bold text-base text-[#F4EFE6] uppercase">
+                      OutBox-Sync — Distributed Transactional Outbox Engine [Systems Architecture]
+                    </span>
+                    <span className="font-mono text-xs text-[#8E8A94]">Java 21 &bull; Spring Boot &bull; MySQL &bull; Event-Driven &bull; SKIP LOCKED</span>
+                  </div>
+                  <ul className="list-disc list-inside text-xs text-[#8E8A94] space-y-1 leading-relaxed">
+                    <li>Eliminated dual-write failure modes by committing database state mutations and outbox records in a unified ACID transaction.</li>
+                    <li>Engineered high-throughput background polling daemon utilizing SELECT FOR UPDATE SKIP LOCKED to prevent duplicate pickups across replicas.</li>
+                  </ul>
+                </div>
+
+                {/* Project 4: SaishTask */}
                 <div className="border-l-2 border-[#FF056D] pl-4 space-y-1.5">
                   <div className="flex flex-wrap items-baseline justify-between">
                     <span className="font-display font-bold text-base text-[#F4EFE6] uppercase">
@@ -375,20 +412,6 @@ FEATURED PROJECTS
                     <li>Engineered an enterprise-grade full-stack task application adhering to strict Controller-Service-Repository architecture.</li>
                     <li>Implemented optimistic concurrency locking (@Version), global exception handling (@ControllerAdvice), and normalized PostgreSQL schemas.</li>
                     <li>Designed clean REST contracts validated via Postman and integrated with a high-speed Vite + React frontend.</li>
-                  </ul>
-                </div>
-
-                {/* Project 4: OutBox-Sync */}
-                <div className="border-l-2 border-[#FF056D] pl-4 space-y-1.5">
-                  <div className="flex flex-wrap items-baseline justify-between">
-                    <span className="font-display font-bold text-base text-[#F4EFE6] uppercase">
-                      OutBox-Sync — Distributed Transactional Outbox Engine [Systems Architecture]
-                    </span>
-                    <span className="font-mono text-xs text-[#8E8A94]">Java 21 &bull; Spring Boot &bull; MySQL &bull; Event-Driven &bull; SKIP LOCKED</span>
-                  </div>
-                  <ul className="list-disc list-inside text-xs text-[#8E8A94] space-y-1 leading-relaxed">
-                    <li>Eliminated dual-write failure modes by committing database state mutations and outbox records in a unified ACID transaction.</li>
-                    <li>Engineered high-throughput background polling daemon utilizing SELECT FOR UPDATE SKIP LOCKED to prevent duplicate pickups across replicas.</li>
                   </ul>
                 </div>
               </div>
@@ -414,6 +437,7 @@ FEATURED PROJECTS
           </div>
         </motion.div>
       </div>
+      )}
     </AnimatePresence>
   )
 }

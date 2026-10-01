@@ -2,47 +2,8 @@ import { Project } from '../types'
 
 export const projects: Project[] = [
   {
-    id: 'chronos',
-    number: '01',
-    title: 'CHRONOS',
-    tagline: 'Time-Traveling State Reconstruction Engine & Event Stream Replay',
-    status: 'Systems Architecture',
-    category: 'Distributed Systems & Event Sourcing',
-    year: '2025',
-    isMobileApp: false,
-    whatItIs:
-      'A temporal state reconstruction engine designed to preserve application history as immutable domain events, enabling point-in-time state reconstruction, event stream inspection, and deterministic historical replay.',
-    whatSaishBuilt:
-      'Designed and implemented the core event-sourcing runtime with immutable versioned domain events, snapshot-assisted replay mechanisms, optimistic concurrency control, and an interactive state inspection dashboard for tracking aggregate histories.',
-    description:
-      'Time-traveling state reconstruction engine built on event sourcing principles, temporal queries, snapshot-assisted replay, and immutable audit logs.',
-    longDescription:
-      'Conventional systems retain only the latest state or fragmented secondary logs, making historical debugging and auditability brittle. Chronos treats immutable domain events as the absolute source of truth. Every valid aggregate transition generates a cryptographically ordered event. Given any point in recorded timeline, Chronos reconstructs the exact state deterministically via forward replay and snapshot interpolation.',
-    tags: ['Java 21', 'Spring Boot', 'Event Sourcing', 'Temporal Replay', 'CQRS', 'PostgreSQL', 'Immutability', 'State Inspection'],
-    architecture: [
-      { layer: 'Event Store Core', detail: 'Append-only immutable event log with strict monotonic sequence numbering and partition keys' },
-      { layer: 'Temporal Replay Engine', detail: 'Point-in-time state reconstructor combining periodic snapshots with delta event streams' },
-      { layer: 'Concurrency Boundary', detail: 'Optimistic locking enforcing expected version invariants to prevent split-brain aggregate mutations' },
-      { layer: 'Inspection Dashboard', detail: 'Real-time timeline visualizer, event payload inspector, and historical state comparator' },
-      { layer: 'Persistence Layer', detail: 'Relational event schema optimized with composite indexes on aggregate_id and version' },
-    ],
-    engineeringDecisions: [
-      'Treated immutable domain events as the single source of truth rather than mutating row states directly',
-      'Engineered snapshot-assisted replay to reconstruct aggregate states in sub-linear time without full history scans',
-      'Enforced strict optimistic concurrency checks preventing concurrent conflicting transitions on identical aggregates',
-      'Developed temporal comparison view to inspect state deltas across historical discrete timestamps'
-    ],
-    githubUrl: 'https://github.com/saishsanas/chronos',
-    accentColor: '#FF056D',
-    flowDiagramType: 'outbox',
-    screenshots: [
-      { title: 'Chronos Live Dashboard & Metrics', src: '/chronos/chronos-dashboard.png' },
-      { title: 'Temporal Replay & State Inspection', src: '/chronos/chronos-temporal-replay.png' },
-    ]
-  },
-  {
     id: 'carewave',
-    number: '02',
+    number: '01',
     title: 'CAREWAVE',
     tagline: 'Mobile-Based Emergency Response & Distributed Backend Dispatch',
     status: 'In Progress',
@@ -85,8 +46,83 @@ export const projects: Project[] = [
     ]
   },
   {
-    id: 'saishtask',
+    id: 'chronos',
+    number: '02',
+    title: 'CHRONOS',
+    tagline: 'Time-Traveling State Reconstruction Engine & Event Stream Replay',
+    status: 'Systems Architecture',
+    category: 'Distributed Systems & Event Sourcing',
+    year: '2025',
+    isMobileApp: false,
+    whatItIs:
+      'A temporal state reconstruction engine designed to preserve application history as immutable domain events, enabling point-in-time state reconstruction, event stream inspection, and deterministic historical replay.',
+    whatSaishBuilt:
+      'Designed and implemented the core event-sourcing runtime with immutable versioned domain events, snapshot-assisted replay mechanisms, optimistic concurrency control, and an interactive state inspection dashboard for tracking aggregate histories.',
+    description:
+      'Time-traveling state reconstruction engine built on event sourcing principles, temporal queries, snapshot-assisted replay, and immutable audit logs.',
+    longDescription:
+      'Conventional systems retain only the latest state or fragmented secondary logs, making historical debugging and auditability brittle. Chronos treats immutable domain events as the absolute source of truth. Every valid aggregate transition generates a cryptographically ordered event. Given any point in recorded timeline, Chronos reconstructs the exact state deterministically via forward replay and snapshot interpolation.',
+    tags: ['Java 21', 'Spring Boot', 'Event Sourcing', 'Temporal Replay', 'CQRS', 'PostgreSQL', 'Immutability', 'State Inspection'],
+    architecture: [
+      { layer: 'Event Store Core', detail: 'Append-only immutable event log with strict monotonic sequence numbering and partition keys' },
+      { layer: 'Temporal Replay Engine', detail: 'Point-in-time state reconstructor combining periodic snapshots with delta event streams' },
+      { layer: 'Concurrency Boundary', detail: 'Optimistic locking enforcing expected version invariants to prevent split-brain aggregate mutations' },
+      { layer: 'Inspection Dashboard', detail: 'Real-time timeline visualizer, event payload inspector, and historical state comparator' },
+      { layer: 'Persistence Layer', detail: 'Relational event schema optimized with composite indexes on aggregate_id and version' },
+    ],
+    engineeringDecisions: [
+      'Treated immutable domain events as the single source of truth rather than mutating row states directly',
+      'Engineered snapshot-assisted replay to reconstruct aggregate states in sub-linear time without full history scans',
+      'Enforced strict optimistic concurrency checks preventing concurrent conflicting transitions on identical aggregates',
+      'Developed temporal comparison view to inspect state deltas across historical discrete timestamps'
+    ],
+    githubUrl: 'https://github.com/saishsanas/chronos',
+    accentColor: '#FF056D',
+    flowDiagramType: 'outbox',
+    screenshots: [
+      { title: 'Chronos Live Dashboard & Metrics', src: '/chronos/chronos-dashboard.png' },
+      { title: 'Temporal Replay & State Inspection', src: '/chronos/chronos-temporal-replay.png' },
+    ]
+  },
+  {
+    id: 'outbox-sync',
     number: '03',
+    title: 'OUTBOX-SYNC',
+    tagline: 'Reliable Event-Driven Distributed Outbox Architecture',
+    status: 'Systems Architecture',
+    category: 'Backend / Distributed Systems',
+    year: '2025',
+    isMobileApp: false,
+    featuredVisualType: 'outbox-flow',
+    whatItIs:
+      'A dedicated backend systems architecture implementing the Transactional Outbox Pattern to guarantee reliable event processing, automated retry mechanisms, and failure handling without distributed dual-write inconsistency.',
+    whatSaishBuilt:
+      'Engineered the atomic transactional persistence layer combining business entity mutations and outbox records in a single ACID commit with JPA/Hibernate and MySQL. Developed asynchronous polling and event dispatch with automated retry policies and dead-letter failure handling.',
+    description:
+      'Robust backend systems implementation of the Transactional Outbox pattern with automated retries, event processing, and MySQL persistence.',
+    longDescription:
+      'In distributed architectures, writing to a database and publishing an event to a message stream cannot be safely executed as independent operations without risking dual-write inconsistencies. OutBox-Sync implements the Transactional Outbox Pattern: persisting domain changes and corresponding event records within a single atomic relational transaction, combined with an asynchronous polling processor featuring exponential retry mechanisms and failure handling.',
+    tags: ['Java', 'Spring Boot', 'JPA / Hibernate', 'MySQL', 'Maven', 'Transactional Outbox', 'Event Processing', 'Retry Mechanism', 'REST APIs'],
+    architecture: [
+      { layer: 'Command Ingestion', detail: 'RESTful API controllers accepting commands and validating domain payloads' },
+      { layer: 'Atomic Transaction', detail: 'Single ACID boundary: Business entity state + Outbox event record committed together' },
+      { layer: 'Event Processing Engine', detail: 'Asynchronous event poller querying pending records with concurrency safeguards' },
+      { layer: 'Retry & Failure Handler', detail: 'Configurable retry mechanism with backoff policies and dead-letter record tracking' },
+      { layer: 'Persistence Layer', detail: 'MySQL database with JPA / Hibernate entity mappings and transaction management' },
+    ],
+    engineeringDecisions: [
+      'Completely eliminated dual-write failure windows where database commit succeeds but message publishing fails',
+      'Engineered an atomic database transaction combining business entity state and outbox table persistence',
+      'Implemented robust retry mechanism with failure handling to ensure resilient at-least-once message delivery',
+      'Structured modular Spring Boot and Maven project architecture with clean domain event encapsulation'
+    ],
+    githubUrl: 'https://github.com/saishsanas/OutBox-Sync-TeamProject',
+    accentColor: '#FF056D',
+    flowDiagramType: 'outbox'
+  },
+  {
+    id: 'saishtask',
+    number: '04',
     title: 'SAISHTASK',
     tagline: 'Full-Stack Task & Workflow Management Application',
     status: 'Completed',
@@ -127,41 +163,5 @@ export const projects: Project[] = [
       { title: 'SaishTask Dashboard & List Management', src: '/saishtask/homepageSaishTask.png' },
       { title: 'Create Task & Categorization Workflow', src: '/saishtask/create-tasklist.png' },
     ]
-  },
-  {
-    id: 'outbox-sync',
-    number: '04',
-    title: 'OUTBOX-SYNC',
-    tagline: 'Reliable Event-Driven Distributed Outbox Architecture',
-    status: 'Systems Architecture',
-    category: 'Backend / Distributed Systems',
-    year: '2025',
-    isMobileApp: false,
-    featuredVisualType: 'outbox-flow',
-    whatItIs:
-      'A dedicated backend systems architecture implementing the Transactional Outbox Pattern to guarantee reliable event processing, automated retry mechanisms, and failure handling without distributed dual-write inconsistency.',
-    whatSaishBuilt:
-      'Engineered the atomic transactional persistence layer combining business entity mutations and outbox records in a single ACID commit with JPA/Hibernate and MySQL. Developed asynchronous polling and event dispatch with automated retry policies and dead-letter failure handling.',
-    description:
-      'Robust backend systems implementation of the Transactional Outbox pattern with automated retries, event processing, and MySQL persistence.',
-    longDescription:
-      'In distributed architectures, writing to a database and publishing an event to a message stream cannot be safely executed as independent operations without risking dual-write inconsistencies. OutBox-Sync implements the Transactional Outbox Pattern: persisting domain changes and corresponding event records within a single atomic relational transaction, combined with an asynchronous polling processor featuring exponential retry mechanisms and failure handling.',
-    tags: ['Java', 'Spring Boot', 'JPA / Hibernate', 'MySQL', 'Maven', 'Transactional Outbox', 'Event Processing', 'Retry Mechanism', 'REST APIs'],
-    architecture: [
-      { layer: 'Command Ingestion', detail: 'RESTful API controllers accepting commands and validating domain payloads' },
-      { layer: 'Atomic Transaction', detail: 'Single ACID boundary: Business entity state + Outbox event record committed together' },
-      { layer: 'Event Processing Engine', detail: 'Asynchronous event poller querying pending records with concurrency safeguards' },
-      { layer: 'Retry & Failure Handler', detail: 'Configurable retry mechanism with backoff policies and dead-letter record tracking' },
-      { layer: 'Persistence Layer', detail: 'MySQL database with JPA / Hibernate entity mappings and transaction management' },
-    ],
-    engineeringDecisions: [
-      'Completely eliminated dual-write failure windows where database commit succeeds but message publishing fails',
-      'Engineered an atomic database transaction combining business entity state and outbox table persistence',
-      'Implemented robust retry mechanism with failure handling to ensure resilient at-least-once message delivery',
-      'Structured modular Spring Boot and Maven project architecture with clean domain event encapsulation'
-    ],
-    githubUrl: 'https://github.com/saishsanas/OutBox-Sync-TeamProject',
-    accentColor: '#FF056D',
-    flowDiagramType: 'outbox'
   }
 ]

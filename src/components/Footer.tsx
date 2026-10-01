@@ -20,14 +20,22 @@ export function Footer({ onNavigatePanel }: FooterProps) {
     <footer className="border-t border-white/10 bg-[#07080A] py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 font-mono text-xs text-[#8E8A94]">
         <div className="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
-          <span className="text-[#F4EFE6] font-bold tracking-wider">SAISH SANAS</span>
+          <div className="flex items-center gap-2.5">
+            <img
+              src="/images/saish-photo-passport.jpg"
+              alt="Saish Sanas"
+              className="w-8 h-8 rounded-full object-cover border border-[#FF056D]/40 shrink-0 grayscale hover:grayscale-0 transition-all duration-300 shadow-sm"
+              loading="lazy"
+            />
+            <span className="text-[#F4EFE6] font-bold tracking-wider">SAISH SANAS</span>
+          </div>
           <span className="hidden sm:inline text-[#5E5B56]">/</span>
           <span>JAVA BACKEND & SYSTEMS DEVELOPER</span>
           <span className="hidden sm:inline text-[#5E5B56]">/</span>
           <span className="text-[#FF056D] font-semibold">PUNE, INDIA</span>
         </div>
 
-        <div className="flex items-center gap-6">
+        <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 text-center sm:text-right">
           <span className="text-[#5E5B56] text-[11px]">
             ARCHITECTED FOR PERFORMANCE & RELIABILITY
           </span>

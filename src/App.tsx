@@ -19,6 +19,7 @@ import { Footer } from './components/Footer'
 import { ResumeModal } from './components/ResumeModal'
 import { ProjectModal } from './components/ProjectModal'
 import { CertificateModal } from './components/CertificateModal'
+import { PublicationLightboxModal, LightboxData } from './components/PublicationLightboxModal'
 import { NotFoundPage } from './components/NotFoundPage'
 import { Project, Credential } from './types'
 
@@ -40,6 +41,24 @@ function PortfolioContent() {
   const [isResumeOpen, setIsResumeOpen] = useState(false)
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const [selectedCredential, setSelectedCredential] = useState<Credential | null>(null)
+  const [selectedArtwork, setSelectedArtwork] = useState<LightboxData | null>(null)
+
+  // Automatic body scroll lock while ANY modal is open, with guaranteed cleanup on close
+  useEffect(() => {
+    const isAnyModalOpen =
+      isResumeOpen ||
+      selectedProject !== null ||
+      selectedCredential !== null ||
+      selectedArtwork !== null
+
+    if (isAnyModalOpen) {
+      const prevOverflow = document.body.style.overflow
+      document.body.style.overflow = 'hidden'
+      return () => {
+        document.body.style.overflow = prevOverflow
+      }
+    }
+  }, [isResumeOpen, selectedProject, selectedCredential, selectedArtwork])
 
   // Listen to popstate for SPA routing
   useEffect(() => {
@@ -71,7 +90,11 @@ function PortfolioContent() {
 
   // Keyboard navigation across panels [1-5] and Arrow Keys [← / →]
   useEffect(() => {
-    const isAnyModalOpen = isResumeOpen || selectedProject !== null || selectedCredential !== null
+    const isAnyModalOpen =
+      isResumeOpen ||
+      selectedProject !== null ||
+      selectedCredential !== null ||
+      selectedArtwork !== null
 
     const handleKeyDown = (e: KeyboardEvent) => {
       // Ignore if user is inside a form input/textarea or a modal is open
@@ -101,7 +124,7 @@ function PortfolioContent() {
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [activePanel, isResumeOpen, selectedProject, selectedCredential, handleSelectPanel, playClick])
+  }, [activePanel, isResumeOpen, selectedProject, selectedCredential, selectedArtwork, handleSelectPanel, playClick])
 
   // Custom 404 Route handling
   if (currentPath !== '/' && currentPath !== '') {
@@ -172,7 +195,7 @@ function PortfolioContent() {
               <div className="space-y-16">
                 <Timeline />
                 <Credentials onSelectCredential={(cred) => setSelectedCredential(cred)} />
-                <ResearchPublications />
+                <ResearchPublications onSelectArtwork={(art) => setSelectedArtwork(art)} />
               </div>
             )}
 
@@ -258,6 +281,7 @@ function PortfolioContent() {
       <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
       <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
       <CertificateModal credential={selectedCredential} onClose={() => setSelectedCredential(null)} />
+      <PublicationLightboxModal data={selectedArtwork} onClose={() => setSelectedArtwork(null)} />
     </div>
   )
 }

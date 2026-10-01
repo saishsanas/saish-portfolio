@@ -5,9 +5,12 @@ import { publications } from '../data/publications'
 import { PublicationLightboxModal, LightboxData } from './PublicationLightboxModal'
 import { useAudioFx } from '../hooks/useAudioFx'
 
-export function ResearchPublications() {
+export interface ResearchPublicationsProps {
+  onSelectArtwork?: (data: LightboxData) => void
+}
+
+export function ResearchPublications({ onSelectArtwork }: ResearchPublicationsProps) {
   const { playClick, playHover } = useAudioFx()
-  const [selectedArtwork, setSelectedArtwork] = useState<LightboxData | null>(null)
 
   return (
     <section id="research" className="py-24 md:py-36 px-4 sm:px-6 lg:px-8 border-t border-white/10 bg-[#090A0C] relative">
@@ -114,7 +117,7 @@ export function ResearchPublications() {
                     <div
                       onClick={() => {
                         playClick()
-                        setSelectedArtwork({
+                        onSelectArtwork?.({
                           title: pub.title,
                           subtitle: `${pub.journal} • ${pub.volumeIssue}`,
                           imageSrc: pub.thumbnailImage!,
@@ -122,6 +125,7 @@ export function ResearchPublications() {
                           linkUrl: pub.link,
                         })
                       }}
+                      data-cursor="EXPAND"
                       className="group/thumb relative rounded-xl overflow-hidden border border-white/10 aspect-[4/3] bg-black/50 cursor-pointer hover:border-[#FF056D] transition-all"
                     >
                       <img
@@ -145,7 +149,7 @@ export function ResearchPublications() {
                       <button
                         onClick={() => {
                           playClick()
-                          setSelectedArtwork({
+                          onSelectArtwork?.({
                             title: pub.title,
                             subtitle: `${pub.journal} • ${pub.volumeIssue}`,
                             imageSrc: pub.thumbnailImage!,
@@ -154,7 +158,7 @@ export function ResearchPublications() {
                           })
                         }}
                         data-cursor="VIEW"
-                        className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#16171C] hover:bg-[#1D1E24] text-[#F4EFE6] border border-white/10 hover:border-[#FF056D]/50 font-mono text-xs font-semibold uppercase tracking-wider transition-all"
+                        className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#16171C] hover:bg-[#1D1E24] text-[#F4EFE6] border border-white/10 hover:border-[#FF056D]/50 font-mono text-xs font-semibold uppercase tracking-wider transition-all touch-manipulation"
                       >
                         <FileText className="w-3.5 h-3.5 text-[#FF056D]" />
                         <span>VIEW PAPER</span>
@@ -166,7 +170,7 @@ export function ResearchPublications() {
                       <button
                         onClick={() => {
                           playClick()
-                          setSelectedArtwork({
+                          onSelectArtwork?.({
                             title: pub.title,
                             subtitle: `Official Publication Certificate // Author: Saish Sanas (Paper ID: IRJMETS71100089260)`,
                             imageSrc: pub.certificateImage!,
@@ -175,7 +179,7 @@ export function ResearchPublications() {
                           })
                         }}
                         data-cursor="CERTIFICATE"
-                        className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#16171C] hover:bg-[#1D1E24] text-[#F4EFE6] border border-white/10 hover:border-[#FF056D]/50 font-mono text-xs font-semibold uppercase tracking-wider transition-all"
+                        className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#16171C] hover:bg-[#1D1E24] text-[#F4EFE6] border border-white/10 hover:border-[#FF056D]/50 font-mono text-xs font-semibold uppercase tracking-wider transition-all touch-manipulation"
                       >
                         <Award className="w-3.5 h-3.5 text-[#FF056D]" />
                         <span>VIEW CERTIFICATE</span>
@@ -280,12 +284,6 @@ export function ResearchPublications() {
           ))}
         </div>
       </div>
-
-      {/* Publication & Certificate Lightbox Modal */}
-      <PublicationLightboxModal
-        data={selectedArtwork}
-        onClose={() => setSelectedArtwork(null)}
-      />
     </section>
   )
 }
