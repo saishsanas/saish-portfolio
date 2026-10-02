@@ -57,10 +57,10 @@ export function Credentials({ onSelectCredential }: CredentialsProps) {
                 <div>
                   {/* Top Bar with Icon & Status */}
                   <div className="flex items-center justify-between mb-6">
-                    {cred.id === 'oci-2025' && cred.certificateImage ? (
+                    {cred.id === 'oci-2025' && (cred.badgeImage || cred.certificateImage) ? (
                       <div className="w-14 h-14 rounded-2xl bg-[#17181D] border border-[#FF056D]/30 p-1 flex items-center justify-center group-hover:scale-105 transition-transform overflow-hidden shadow-md">
                         <img
-                          src={cred.certificateImage}
+                          src={cred.badgeImage || cred.certificateImage}
                           alt="Oracle Badge"
                           className="w-full h-full object-contain rounded-xl"
                         />
@@ -140,7 +140,7 @@ export function Credentials({ onSelectCredential }: CredentialsProps) {
                         } font-mono text-[11px] font-bold uppercase tracking-wider transition-all`}
                       >
                         <Eye className="w-3.5 h-3.5" />
-                        <span>{cred.type === 'DEGREE' ? 'VIEW DEGREE PREVIEW' : 'VIEW ARTWORK'} ↗</span>
+                        <span>{cred.type === 'DEGREE' ? 'VIEW DEGREE PREVIEW' : 'VIEW CERTIFICATE'} ↗</span>
                       </button>
                     )}
                   </div>

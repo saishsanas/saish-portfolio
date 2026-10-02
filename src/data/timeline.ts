@@ -78,19 +78,65 @@ export const timeline: TimelineItem[] = [
     status: 'COMPLETED'
   },
   {
+    year: '2025',
+    period: 'HACKATHON',
+    title: 'Smart India Hackathon (SIH) 2025',
+    subtitle: 'Participant',
+    tag: 'ENGINEERING COMPETITION',
+    description:
+      'Participated in Smart India Hackathon (SIH) 2025, collaborating in a high-intensity nationwide engineering hackathon to design and develop software solutions under tight time constraints.',
+    deliverables: [
+      'Collaborative problem-solving under real-time hackathon constraints',
+      'Rapid technical ideation, backend architecture prototyping, and team execution'
+    ],
+    status: 'COMPLETED'
+  },
+  {
     year: '2022 – 2026',
     period: 'UNDERGRADUATE',
     title: 'Bachelor of Engineering in Computer Engineering',
-    subtitle: 'Savitribai Phule Pune University (SPPU), Pune',
-    organization: 'Savitribai Phule Pune University',
+    subtitle: 'Navsahyadri Education Society Group of Institutions, Pune (SPPU)',
+    organization: 'Navsahyadri Education Society Group of Institutions',
     tag: 'EDUCATION',
     description:
-      'Pursuing four-year computer engineering degree with coursework in Operating Systems, Database Management Systems, Computer Networks, and Data Structures & Algorithms.',
+      'Pursuing four-year computer engineering degree at Navsahyadri Education Society Group of Institutions, Pune (affiliated with Savitribai Phule Pune University) with coursework in Operating Systems, Database Management Systems, Computer Networks, and Data Structures & Algorithms.',
     deliverables: [
       'Core foundation in Data Structures, Algorithms & Time Complexity analysis',
       'Hands-on coursework in Java, OOP, Relational Databases, and Linux',
       'Senior capstone engineering work in emergency alert systems (CareWave)'
     ],
     status: 'ACTIVE'
+  },
+  {
+    year: '2021 – 2022',
+    period: '2021 – 2022',
+    title: 'Junior College — 11th & 12th Standard',
+    subtitle: 'Nutan Marathi Vidyalaya, Bajirao Road, Pune',
+    organization: 'Nutan Marathi Vidyalaya',
+    tag: 'HIGHER SECONDARY',
+    description:
+      'Completed Higher Secondary Certificate (HSC) 11th & 12th Standard coursework under Maharashtra State Board at Nutan Marathi Vidyalaya, Bajirao Road, Pune, building foundational proficiency in mathematics, physics, and science disciplines.',
+    deliverables: [
+      'Higher Secondary Certificate (HSC) education under Maharashtra State Board',
+      'Strong analytical foundation in Mathematics, Physics, and Science fundamentals',
+      'Prepared for competitive undergraduate engineering admissions'
+    ],
+    status: 'COMPLETED'
+  },
+  {
+    year: '2020',
+    period: '2020',
+    title: '10th Standard / Secondary School',
+    subtitle: 'Sarhad School, Pune',
+    organization: 'Sarhad School',
+    tag: 'SECONDARY EDUCATION',
+    description:
+      'Successfully completed Secondary School Certificate (SSC) 10th Standard examinations under Maharashtra State Board at Sarhad School, Pune.',
+    deliverables: [
+      'Secondary School Certificate (SSC) 10th Standard examinations under Maharashtra State Board',
+      'Comprehensive foundation in general science, mathematics, and regional language proficiency',
+      'Consistent academic performance leading into higher secondary science stream'
+    ],
+    status: 'COMPLETED'
   }
 ]

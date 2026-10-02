@@ -4,12 +4,12 @@ export const credentials: Credential[] = [
   {
     id: 'oci-2025',
     title: 'Oracle Cloud Infrastructure 2025 — Certified Foundations Associate',
-    issuer: 'Oracle',
-    issuedDate: '2025',
+    issuer: 'Oracle University',
+    issuedDate: 'October 31, 2025',
     credentialId: '103057743OCI25FNDCFA',
-    certificateImage: '/certificates/oracle-badge.jpeg',
-    verifyUrl:
-      'https://catalog-education.oracle.com/ords/certview/sharebadge?id=AC22289CE2412240347A70EDFD0472D147C258FBFD39894AA10381647B7B7780I',
+    certificateImage: '/certificates/oracle-cert-preview.png',
+    badgeImage: '/certificates/oracle-badge.jpeg',
+    pdfUrl: '/certificates/oracle-cloud-infrastructure-2025-certificate.pdf',
     type: 'CERTIFICATION',
     description:
       'Official Oracle accreditation validating foundational understanding of public-cloud principles, OCI core services (compute, storage, networking, identity & access), and cloud-architecture fundamentals.',

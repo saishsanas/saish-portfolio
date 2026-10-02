@@ -30,7 +30,7 @@ export function Footer({ onNavigatePanel }: FooterProps) {
             <span className="text-[#F4EFE6] font-bold tracking-wider">SAISH SANAS</span>
           </div>
           <span className="hidden sm:inline text-[#5E5B56]">/</span>
-          <span>JAVA BACKEND & SYSTEMS DEVELOPER</span>
+          <span>SOFTWARE & SYSTEMS DEVELOPER</span>
           <span className="hidden sm:inline text-[#5E5B56]">/</span>
           <span className="text-[#FF056D] font-semibold">PUNE, INDIA</span>
         </div>

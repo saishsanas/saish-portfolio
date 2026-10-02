@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowDown, FileText, Terminal, ShieldCheck, MapPin, Cpu, GitCommit } from 'lucide-react'
+import { ArrowDown, FileText, ShieldCheck } from 'lucide-react'
 import { useAudioFx } from '../hooks/useAudioFx'
+import { MangaHeroBackground } from './MangaBackgroundAtmosphere'
 
 interface HeroProps {
   onOpenResume: () => void
@@ -45,6 +46,9 @@ export function Hero({ onOpenResume, onNavigateWork }: HeroProps) {
 
   return (
     <section className="relative min-h-screen flex flex-col justify-between pt-24 sm:pt-28 pb-12 px-4 sm:px-6 lg:px-8 bg-grid-pattern overflow-hidden">
+      {/* Background Manga Atmosphere */}
+      <MangaHeroBackground />
+
       {/* Ambient background glows */}
       <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[380px] bg-[#FF056D]/8 rounded-full blur-[160px] pointer-events-none" />
       <div className="absolute -top-10 right-0 w-[450px] h-[350px] bg-[#B8004C]/10 rounded-full blur-[140px] pointer-events-none" />
@@ -93,56 +97,79 @@ export function Hero({ onOpenResume, onNavigateWork }: HeroProps) {
             </motion.div>
 
             {/* Oversized Cinematic Typography */}
-            <div className="space-y-0.5 select-none">
+            <div className="space-y-0.5 select-none relative">
               {/* Row 1: First Name */}
-              <div className="overflow-hidden">
+              <div className="overflow-hidden pb-0.5">
                 <motion.h1
                   initial={{ y: '100%' }}
                   animate={{ y: 0 }}
                   transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                  className="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-[clamp(3rem,6vw,5.6rem)] leading-[0.9] tracking-tighter uppercase text-[#F4EFE6]"
+                  className="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-[clamp(3rem,6vw,5.6rem)] leading-[0.95] tracking-tighter uppercase text-[#F4EFE6]"
                 >
                   SAISH
                 </motion.h1>
               </div>
 
               {/* Row 2: Last Name with Editorial Stroke */}
-              <div className="overflow-hidden">
+              <div className="overflow-hidden pb-0.5">
                 <motion.div
                   initial={{ y: '100%' }}
                   animate={{ y: 0 }}
                   transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-                  className="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-[clamp(3rem,6vw,5.6rem)] leading-[0.9] tracking-tighter uppercase text-[#F4EFE6]"
+                  className="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-[clamp(3rem,6vw,5.6rem)] leading-[0.95] tracking-tighter uppercase text-[#F4EFE6]"
                 >
                   <span className="text-stroke hover:text-[#FF056D] transition-colors duration-300">SANAS</span>
                 </motion.div>
               </div>
 
-              {/* Row 3: Specialty Highlight */}
-              <div className="overflow-hidden pt-1">
-                <motion.div
-                  initial={{ y: '100%' }}
-                  animate={{ y: 0 }}
-                  transition={{ duration: 0.7, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <span className="font-display font-black text-3xl sm:text-5xl md:text-6xl lg:text-[clamp(2.5rem,5.2vw,4.8rem)] leading-[0.9] tracking-tight text-[#FF056D] block">
-                    JAVA BACKEND
-                  </span>
-                </motion.div>
+              {/* Primary Title Block */}
+              <div>
+                {/* Row 3: Primary Title Word 1 */}
+                <div className="overflow-y-clip overflow-x-visible pt-1 pb-0.5 pr-2 sm:pr-4">
+                  <motion.div
+                    initial={{ y: '100%' }}
+                    animate={{ y: 0 }}
+                    transition={{ duration: 0.7, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
+                    className="w-full"
+                  >
+                    <span className="font-display font-black text-3xl sm:text-5xl md:text-6xl lg:text-[clamp(2.4rem,4.8vw,4.5rem)] leading-[1.0] tracking-normal text-[#FF056D] block">
+                      SOFTWARE
+                    </span>
+                  </motion.div>
+                </div>
+
+                {/* Row 4: Primary Title Word 2 */}
+                <div className="overflow-y-clip overflow-x-visible pb-0.5 pr-2 sm:pr-4">
+                  <motion.div
+                    initial={{ y: '100%' }}
+                    animate={{ y: 0 }}
+                    transition={{ duration: 0.7, delay: 0.24, ease: [0.16, 1, 0.3, 1] }}
+                    className="w-full"
+                  >
+                    <span className="font-display font-bold text-2xl sm:text-4xl md:text-5xl lg:text-[clamp(2rem,4.2vw,3.8rem)] leading-[1.0] tracking-normal uppercase text-[#8E8A94] block">
+                      DEVELOPER
+                    </span>
+                  </motion.div>
+                </div>
               </div>
 
-              {/* Row 4: Developer Role */}
-              <div className="overflow-hidden">
-                <motion.div
-                  initial={{ y: '100%' }}
-                  animate={{ y: 0 }}
-                  transition={{ duration: 0.7, delay: 0.24, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <span className="font-display font-bold text-2xl sm:text-4xl md:text-5xl lg:text-[clamp(2rem,4.4vw,4rem)] leading-[0.9] tracking-tight uppercase text-[#8E8A94] block">
-                    DEVELOPER
-                  </span>
-                </motion.div>
-              </div>
+              {/* Supporting Technical Line */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.28 }}
+                className="pt-2 font-mono text-xs sm:text-sm text-[#F4EFE6]/80 font-medium tracking-wide flex flex-wrap items-center gap-x-2 gap-y-1"
+              >
+                <span className="text-[#FF056D] font-bold">Java</span>
+                <span className="text-[#5E5D66]">•</span>
+                <span>Spring Boot</span>
+                <span className="text-[#5E5D66]">•</span>
+                <span>Backend Engineering</span>
+                <span className="text-[#5E5D66]">•</span>
+                <span>REST APIs</span>
+                <span className="text-[#5E5D66]">•</span>
+                <span>PostgreSQL</span>
+              </motion.div>
             </div>
 
             {/* Editorial Technical Mission Statement */}
@@ -196,13 +223,6 @@ export function Hero({ onOpenResume, onNavigateWork }: HeroProps) {
                 <FileText className="w-4 h-4 text-[#FF056D]" />
                 <span>EXAMINE RESUME ↗</span>
               </button>
-
-              {/* Terminal Quick Glance */}
-              <div className="hidden sm:flex items-center gap-3 px-4 py-3 rounded-xl bg-[#111215] border border-white/5 font-mono text-xs text-[#8E8A94]">
-                <Terminal className="w-4 h-4 text-[#FF056D]" />
-                <span>mvn test</span>
-                <span className="text-[#FF056D] font-bold">● 100% PASS</span>
-              </div>
             </motion.div>
           </div>
 
@@ -239,7 +259,7 @@ export function Hero({ onOpenResume, onNavigateWork }: HeroProps) {
                 <div className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-[#090A0C]">
                   <img
                     src="/images/saish-portrait-cutout.png"
-                    alt="Saish Sanas - Java Backend Developer"
+                    alt="Saish Sanas - Software Developer"
                     className="w-full h-full object-cover object-top contrast-[1.06] brightness-[0.98] saturate-[0.96] group-hover:saturate-105 group-hover:scale-[1.02] transition-all duration-700 select-none"
                     style={{
                       maskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)',

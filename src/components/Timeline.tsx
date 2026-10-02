@@ -2,12 +2,14 @@ import { motion } from 'framer-motion'
 import { CheckCircle2, Briefcase, GraduationCap, Award, BookOpen, ShieldCheck } from 'lucide-react'
 import { timeline } from '../data/timeline'
 import { useAudioFx } from '../hooks/useAudioFx'
+import { MangaJourneyBackground } from './MangaBackgroundAtmosphere'
 
 export function Timeline() {
   const { playHover } = useAudioFx()
 
   return (
-    <section id="journey" className="py-24 md:py-36 px-4 sm:px-6 lg:px-8 border-t border-white/10 bg-[#090A0C] relative">
+    <section id="journey" className="py-24 md:py-36 px-4 sm:px-6 lg:px-8 border-t border-white/10 bg-[#090A0C] relative overflow-hidden">
+      <MangaJourneyBackground />
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 sm:mb-20">

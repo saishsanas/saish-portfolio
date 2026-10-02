@@ -35,7 +35,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
   const handleCopyText = () => {
     playSuccess()
     const resumeText = `SAISH SANAS
-Java Backend Developer | Software Engineer
+Software Developer | Backend Engineer
 Phone: +91-9322546613 | Email: saishsanas@gmail.com | Location: Pune, Maharashtra, India
 GitHub: https://github.com/saishsanas | LinkedIn: https://www.linkedin.com/in/saish-sanas-48932433/
 
@@ -185,7 +185,7 @@ FEATURED PROJECTS
                       SAISH SANAS
                     </h1>
                     <span className="font-mono text-sm text-[#FF056D] font-bold">
-                      JAVA BACKEND DEVELOPER
+                      SOFTWARE DEVELOPER
                     </span>
                   </div>
 

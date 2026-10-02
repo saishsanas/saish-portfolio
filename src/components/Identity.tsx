@@ -8,24 +8,24 @@ export function Identity() {
   const pillars = [
     {
       num: '01',
-      title: 'DETERMINISTIC SYSTEMS',
+      title: 'DETERMINISTIC SYSTEMS & REST APIs',
       icon: Server,
-      text: 'Prioritizing systems where state transitions are explicit, transactional boundaries are atomic, and edge cases are accounted for before they reach production.',
-      highlight: 'ACID & Idempotency'
+      text: 'Designing resilient Java & Spring Boot REST APIs with atomic transactional boundaries, robust error handling, and end-to-end authentication using Spring Security & JWT.',
+      highlight: 'Spring Boot REST APIs & JWT Security'
     },
     {
       num: '02',
-      title: 'DATA MODELING DISCIPLINE',
+      title: 'DATA MODELING & GEOFENCING',
       icon: Database,
-      text: 'Relational schemas built on proper normalization, thoughtful indexing strategies (B-Tree, GIN), and connection pooling tuned for zero connection leaks.',
-      highlight: 'PostgreSQL, MySQL & JPA'
+      text: 'Relational database schemas built on PostgreSQL/JPA with optimized spatial indexing for real-time GeoFence monitoring and high-throughput transaction handling.',
+      highlight: 'PostgreSQL & GeoFence Monitoring'
     },
     {
       num: '03',
-      title: 'EVENT RELIABILITY',
+      title: 'EVENT RELIABILITY & MESSAGING',
       icon: GitBranch,
-      text: 'Implementing resilient distributed messaging patterns such as Transactional Outbox to prevent dual-write anomalies between database updates and broker events.',
-      highlight: 'Guaranteed Delivery'
+      text: 'Implementing resilient distributed event patterns like Transactional Outbox alongside Firebase Cloud Messaging (FCM) to guarantee real-time alert delivery.',
+      highlight: 'Transactional Outbox & FCM'
     },
   ]
 
@@ -63,7 +63,7 @@ export function Identity() {
 
             <div className="space-y-4 text-base md:text-lg text-[#F4EFE6]/80 font-sans leading-relaxed border-l-2 border-[#FF056D] pl-6">
               <p>
-                I am <span className="text-[#F4EFE6] font-semibold">Saish Sanas</span>, a Java Backend Developer driven by what happens behind the scenes. While interfaces capture user attention, it is the server-side mechanics—correctness, transactional integrity, and relational data modeling—that determine whether an application actually succeeds.
+                I am <span className="text-[#F4EFE6] font-semibold">Saish Sanas</span>, a Software Developer with a strong foundation in backend engineering and Java ecosystems. While interfaces capture user attention, it is the server-side mechanics—correctness, transactional integrity, and relational data modeling—that determine whether an application actually succeeds.
               </p>
               <p className="text-sm md:text-base text-[#8E8A94]">
                 Grounded in my Computer Engineering curriculum at Savitribai Phule Pune University and hands-on industry internship experience at Codec Technologies, I focus on solid foundations: writing clean idiomatic Java, structuring deterministic Spring Boot services, designing normalized relational schemas, and orchestrating distributed events.

@@ -4,6 +4,7 @@ import { Copy, Check, FileText, Mail, ArrowUpRight, Send, MapPin, Clock, Globe, 
 import { GithubIcon, LinkedinIcon, DiscordIcon } from './SocialIcons'
 import confetti from 'canvas-confetti'
 import { useAudioFx } from '../hooks/useAudioFx'
+import { MangaContactBackground } from './MangaBackgroundAtmosphere'
 
 interface ContactProps {
   onOpenResume: () => void
@@ -62,7 +63,8 @@ export function Contact({ onOpenResume }: ContactProps) {
   }
 
   return (
-    <section id="contact" className="py-24 md:py-36 px-4 sm:px-6 lg:px-8 border-t border-white/10 bg-[#090A0C] relative">
+    <section id="contact" className="py-24 md:py-36 px-4 sm:px-6 lg:px-8 border-t border-white/10 bg-[#090A0C] relative overflow-hidden">
+      <MangaContactBackground />
       <div className="max-w-7xl mx-auto space-y-16">
         {/* Section Header */}
         <div className="flex items-center gap-3">
@@ -85,7 +87,7 @@ export function Contact({ onOpenResume }: ContactProps) {
           </motion.h2>
 
           <p className="max-w-2xl text-base sm:text-lg text-[#8E8A94] font-sans leading-relaxed">
-            I am actively open to high-impact Java Backend Developer and Software Engineering roles. If your team values deterministic architecture, clean code, and solid engineering discipline, let's talk.
+            I am actively open to high-impact Software Developer, Java Developer, and Backend Engineering roles. If your team values deterministic architecture, clean code, and solid engineering discipline, let's talk.
           </p>
         </div>
 
@@ -276,32 +278,38 @@ export function Contact({ onOpenResume }: ContactProps) {
             </a>
 
             {/* 5. Discord Card */}
-            <div className="p-5 rounded-2xl bg-[#111216] border border-white/10 hover:border-[#FF056D]/40 transition-all flex flex-col justify-between group shadow-lg">
+            <a
+              href="https://discord.gg/dDC9pG863"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={playClick}
+              onMouseEnter={playHover}
+              data-cursor="CONNECT"
+              className="p-5 rounded-2xl bg-[#111216] border border-white/10 hover:border-[#FF056D]/50 transition-all flex flex-col justify-between group shadow-lg"
+            >
               <div>
                 <div className="flex items-center justify-between mb-3">
                   <div className="w-10 h-10 rounded-xl bg-[#18191E] border border-white/10 flex items-center justify-center text-[#8E8A94] group-hover:text-[#FF056D] group-hover:scale-110 transition-all">
                     <DiscordIcon className="w-5 h-5" />
                   </div>
-                  <span className="font-mono text-[10px] text-[#8E8A94] tracking-wider uppercase bg-white/5 px-2 py-0.5 rounded">
-                    ON REQUEST
-                  </span>
+                  <ArrowUpRight className="w-4 h-4 text-[#8E8A94] group-hover:text-[#FF056D] transition-colors" />
                 </div>
                 <span className="font-mono text-[10px] text-[#8E8A94] uppercase tracking-wider block">
                   COMMUNICATION HUB
                 </span>
-                <span className="font-display font-bold text-base text-[#F4EFE6] block mt-0.5">
-                  Discord Channel
+                <span className="font-display font-bold text-base text-[#F4EFE6] group-hover:text-[#FF056D] transition-colors block mt-0.5">
+                  Discord ↗
                 </span>
                 <p className="text-xs text-[#8E8A94] font-sans mt-1">
-                  Available on request for engineering dialogue and pair-screen sessions.
+                  Connect on Discord for engineering discussions and technical dialogue.
                 </p>
               </div>
 
               <div className="mt-4 pt-3 border-t border-white/5 font-mono text-[11px] text-[#8E8A94] flex items-center justify-between">
-                <span className="text-[#F4EFE6]/70">Handle: Shared via Email</span>
-                <span className="text-[#FF056D] font-bold">READY</span>
+                <span>discord.gg/dDC9pG863</span>
+                <span className="text-[#FF056D] font-bold group-hover:underline">JOIN SERVER</span>
               </div>
-            </div>
+            </a>
 
             {/* 6. Location & Time Zone Card */}
             <div className="p-5 rounded-2xl bg-[#111216] border border-white/10 hover:border-[#FF056D]/40 transition-all flex flex-col justify-between group shadow-lg">

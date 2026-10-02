@@ -39,7 +39,7 @@
 
   <!-- Heading -->
   <text x="70" y="270" fill="#F4EFE6" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="900" letter-spacing="-2">SAISH SANAS</text>
-  <text x="70" y="350" fill="#FF056D" font-family="system-ui, -apple-system, sans-serif" font-size="60" font-weight="900" letter-spacing="-1">JAVA BACKEND DEVELOPER</text>
+  <text x="70" y="350" fill="#FF056D" font-family="system-ui, -apple-system, sans-serif" font-size="60" font-weight="900" letter-spacing="-1">SOFTWARE DEVELOPER</text>
 
   <!-- Subtitle Statement -->
   <text x="70" y="420" fill="#8E8A94" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="400">Architecting deterministic backend systems, temporal event streams &amp; transactional outbox engines.</text>

@@ -7,9 +7,10 @@ interface NavbarProps {
   onOpenResume: () => void
   activePanel: number
   onSelectPanel: (panelIndex: number) => void
+  onConnectClick?: () => void
 }
 
-export function Navbar({ onOpenResume, activePanel, onSelectPanel }: NavbarProps) {
+export function Navbar({ onOpenResume, activePanel, onSelectPanel, onConnectClick }: NavbarProps) {
   const { isMuted, toggleSound, playClick, playHover } = useAudioFx()
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -34,6 +35,16 @@ export function Navbar({ onOpenResume, activePanel, onSelectPanel }: NavbarProps
     playClick()
     setMobileMenuOpen(false)
     onSelectPanel(index)
+  }
+
+  const handleConnectClick = () => {
+    playClick()
+    setMobileMenuOpen(false)
+    if (onConnectClick) {
+      onConnectClick()
+    } else {
+      onSelectPanel(4)
+    }
   }
 
   return (
@@ -63,7 +74,7 @@ export function Navbar({ onOpenResume, activePanel, onSelectPanel }: NavbarProps
               </span>
               <span className="font-mono text-[10px] text-[#8E8A94] tracking-widest uppercase flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#FF056D] animate-pulse"></span>
-                JAVA BACKEND DEV
+                SOFTWARE DEV
               </span>
             </div>
           </button>
@@ -140,12 +151,12 @@ export function Navbar({ onOpenResume, activePanel, onSelectPanel }: NavbarProps
 
             {/* Contact CTA */}
             <button
-              onClick={() => handlePanelClick(4)}
+              onClick={handleConnectClick}
               onMouseEnter={playHover}
               data-cursor="CONNECT"
               className="px-3.5 sm:px-4 py-1.5 rounded-full bg-[#FF056D] hover:bg-[#D9045D] text-[#090A0C] text-xs font-mono font-bold tracking-wider transition-all transform active:scale-95 shadow-md shadow-[#FF056D]/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF056D]"
             >
-              LET&apos;S TALK
+              CONNECT
             </button>
 
             {/* Mobile Hamburger */}

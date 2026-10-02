@@ -88,6 +88,19 @@ function PortfolioContent() {
     [activePanel]
   )
 
+  const handleConnectClick = useCallback(() => {
+    if (activePanel !== 4) {
+      setDirection(1)
+      setActivePanel(4)
+    }
+    setTimeout(() => {
+      const contactElement = document.getElementById('contact')
+      if (contactElement) {
+        contactElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    }, 80)
+  }, [activePanel])
+
   // Keyboard navigation across panels [1-5] and Arrow Keys [← / →]
   useEffect(() => {
     const isAnyModalOpen =
@@ -148,6 +161,7 @@ function PortfolioContent() {
       <Navbar
         activePanel={activePanel}
         onSelectPanel={handleSelectPanel}
+        onConnectClick={handleConnectClick}
         onOpenResume={() => setIsResumeOpen(true)}
       />
 

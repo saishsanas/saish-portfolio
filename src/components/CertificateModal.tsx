@@ -96,16 +96,24 @@ export function CertificateModal({ credential, onClose }: CertificateModalProps)
                       <span>VERIFY ONLINE ↗</span>
                     </a>
                   )}
-                  {credential.certificateImage && (
+                  {(credential.pdfUrl || credential.certificateImage) && (
                     <a
-                      href={credential.certificateImage}
+                      href={credential.pdfUrl || credential.certificateImage}
                       download
+                      target="_blank"
+                      rel="noopener noreferrer"
                       onClick={playClick}
                       data-cursor="DOWNLOAD"
                       className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-[#F4EFE6] font-mono text-xs font-bold uppercase tracking-wider transition-all touch-manipulation"
                     >
                       <Download className="w-3.5 h-3.5" />
-                      <span>{credential.type === 'DEGREE' ? 'DOWNLOAD DOCUMENT' : 'DOWNLOAD ARTWORK'} ↗</span>
+                      <span>
+                        {credential.pdfUrl
+                          ? 'DOWNLOAD CERTIFICATE PDF ↗'
+                          : credential.type === 'DEGREE'
+                          ? 'DOWNLOAD DOCUMENT ↗'
+                          : 'DOWNLOAD CERTIFICATE ↗'}
+                      </span>
                     </a>
                   )}
                 </div>

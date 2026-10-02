@@ -64,6 +64,8 @@ export interface Credential {
   issuedDate: string
   credentialId?: string
   certificateImage?: string
+  badgeImage?: string
+  pdfUrl?: string
   verifyUrl?: string
   type: 'CERTIFICATION' | 'DEGREE'
   description: string

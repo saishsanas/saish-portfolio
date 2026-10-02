@@ -4,6 +4,7 @@ import { Check } from 'lucide-react'
 import { techStack } from '../data/techStack'
 import { TechItem } from '../types'
 import { useAudioFx } from '../hooks/useAudioFx'
+import { MangaStackBackground } from './MangaBackgroundAtmosphere'
 
 export function TechStack() {
   const { playClick, playHover, playSelect } = useAudioFx()
@@ -18,7 +19,8 @@ export function TechStack() {
       : techStack.filter((item) => item.category === activeCategory)
 
   return (
-    <section id="stack" className="py-24 md:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/10 bg-[#090A0C]">
+    <section id="stack" className="py-24 md:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/10 bg-[#090A0C] relative overflow-hidden">
+      <MangaStackBackground />
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">

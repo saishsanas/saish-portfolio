@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Trophy, Gamepad2, Award, Globe, Sparkles, Activity } from 'lucide-react'
 import { useAudioFx } from '../hooks/useAudioFx'
+import { MangaPersonalityBackground } from './MangaBackgroundAtmosphere'
 
 export function Personality() {
   const { playHover } = useAudioFx()
@@ -37,7 +38,8 @@ export function Personality() {
   ]
 
   return (
-    <section className="py-24 md:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/10 bg-[#07080A] relative">
+    <section className="py-24 md:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/10 bg-[#07080A] relative overflow-hidden">
+      <MangaPersonalityBackground />
       <div className="max-w-7xl mx-auto space-y-20">
         {/* ============================================================
             SECTION 01: PERSONAL INTERESTS & ATHLETIC DISCIPLINES
@@ -140,11 +142,20 @@ export function Personality() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
               onMouseEnter={playHover}
-              className="lg:col-span-6 p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-[#111216] border border-white/10 hover:border-[#FF056D]/40 transition-all flex flex-col justify-between group shadow-xl"
+              className="lg:col-span-6 p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#121319] via-[#0E0F14] to-[#151218] border-2 border-[#FF056D]/30 hover:border-[#FF056D] transition-all flex flex-col justify-between group shadow-2xl relative overflow-hidden"
             >
-              <div>
+              {/* Subtle background glow */}
+              <div className="absolute top-0 right-0 w-72 h-72 bg-[#FF056D]/10 rounded-full blur-3xl pointer-events-none -mr-16 -mt-16 group-hover:bg-[#FF056D]/15 transition-all" />
+
+              {/* Corner Crosshairs Accent */}
+              <span className="absolute -top-1.5 -left-1.5 font-mono text-[10px] text-[#FF056D]/40 select-none">+</span>
+              <span className="absolute -top-1.5 -right-1.5 font-mono text-[10px] text-[#FF056D]/40 select-none">+</span>
+              <span className="absolute -bottom-1.5 -left-1.5 font-mono text-[10px] text-[#FF056D]/40 select-none">+</span>
+              <span className="absolute -bottom-1.5 -right-1.5 font-mono text-[10px] text-[#FF056D]/40 select-none">+</span>
+
+              <div className="relative z-10">
                 <div className="flex items-center justify-between mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-[#17181D] border border-white/10 flex items-center justify-center text-[#FF056D] group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 rounded-xl bg-[#FF056D]/10 border border-[#FF056D]/30 flex items-center justify-center text-[#FF056D] group-hover:scale-110 transition-transform shadow-lg shadow-[#FF056D]/10">
                     <Gamepad2 className="w-6 h-6" />
                   </div>
                   <span className="font-mono text-[10px] text-[#8E8A94] uppercase tracking-widest bg-white/5 px-2.5 py-1 rounded border border-white/5">
@@ -160,18 +171,34 @@ export function Personality() {
                   GAMING & INTERACTIVE SYSTEMS
                 </h3>
 
-                <blockquote className="border-l-2 border-[#FF056D]/40 pl-4 py-1 font-sans text-sm text-[#F4EFE6]/90 italic leading-relaxed mb-4">
-                  "Enjoy playing video games in my free time, particularly as a way to unwind and explore different interactive experiences."
+                <blockquote className="border-l-2 border-[#FF056D] pl-4 py-1 font-sans text-sm text-[#F4EFE6] italic leading-relaxed mb-4">
+                  "I enjoy competitive games such as Valorant, PUBG, BGMI, and Counter-Strike, along with story-driven games that offer immersive worlds and rich interactive experiences."
                 </blockquote>
 
                 <p className="text-xs sm:text-sm text-[#8E8A94] font-sans leading-relaxed">
-                  Appreciating game design nuances, mechanic balancing, real-time input handling, and immersive world systems serves as a creative counterweight to deep backend engineering.
+                  Engaging in tactical coordination, real-time input reflexes, and mechanical strategy serves as an invigorating creative balance to systems architecture and backend engineering.
                 </p>
+
+                {/* Typography-based game tags */}
+                <div className="mt-4 pt-3 flex flex-wrap gap-1.5 font-mono text-[11px]">
+                  <span className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[#F4EFE6]/90">
+                    Valorant
+                  </span>
+                  <span className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[#F4EFE6]/90">
+                    Counter-Strike
+                  </span>
+                  <span className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[#F4EFE6]/90">
+                    PUBG / BGMI
+                  </span>
+                  <span className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[#F4EFE6]/90">
+                    Story-Driven Worlds
+                  </span>
+                </div>
               </div>
 
-              <div className="pt-6 mt-6 border-t border-white/5 flex items-center justify-between font-mono text-xs text-[#8E8A94]">
+              <div className="pt-6 mt-6 border-t border-white/5 flex items-center justify-between font-mono text-xs text-[#8E8A94] relative z-10">
                 <span>ENGAGEMENT STYLE</span>
-                <span className="text-[#F4EFE6] font-medium">STRATEGY & IMMERSION</span>
+                <span className="text-[#FF056D] font-bold">TACTICAL & IMMERSIVE</span>
               </div>
             </motion.div>
 
@@ -182,11 +209,14 @@ export function Personality() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
               onMouseEnter={playHover}
-              className="lg:col-span-6 p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-[#111216] border border-white/10 hover:border-[#FF056D]/40 transition-all flex flex-col justify-between group shadow-xl"
+              className="lg:col-span-6 p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#121319] via-[#0E0F14] to-[#151218] border-2 border-[#FF056D]/30 hover:border-[#FF056D] transition-all flex flex-col justify-between group shadow-2xl relative overflow-hidden"
             >
-              <div>
+              {/* Subtle background glow */}
+              <div className="absolute top-0 right-0 w-72 h-72 bg-[#FF056D]/10 rounded-full blur-3xl pointer-events-none -mr-16 -mt-16 group-hover:bg-[#FF056D]/15 transition-all" />
+
+              <div className="relative z-10">
                 <div className="flex items-center justify-between mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-[#17181D] border border-white/10 flex items-center justify-center text-[#FF056D] group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 rounded-xl bg-[#FF056D]/10 border border-[#FF056D]/30 flex items-center justify-center text-[#FF056D] group-hover:scale-110 transition-transform shadow-lg shadow-[#FF056D]/10">
                     <Award className="w-6 h-6" />
                   </div>
                   <span className="font-mono text-[10px] text-[#FF056D] bg-[#FF056D]/10 border border-[#FF056D]/30 px-2.5 py-1 rounded font-bold uppercase tracking-wider">
@@ -211,7 +241,7 @@ export function Personality() {
                 </p>
               </div>
 
-              <div className="pt-6 mt-6 border-t border-white/5 flex items-center justify-between font-mono text-xs text-[#8E8A94]">
+              <div className="pt-6 mt-6 border-t border-white/5 flex items-center justify-between font-mono text-xs text-[#8E8A94] relative z-10">
                 <span>OFFICIAL RECOGNITION</span>
                 <span className="text-[#FF056D] font-bold">PUNE DISTRICT BRONZE MEDAL</span>
               </div>
