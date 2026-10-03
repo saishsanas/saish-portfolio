@@ -1,64 +1,81 @@
-# Saish Sanas — Java Backend Developer Portfolio
+# Saish Sanas — Portfolio
 
-A bespoke, high-performance personal portfolio website for **Saish Sanas**, Java Backend / Software Developer.
-
-Inspired by the design philosophy of high-end personal brand experiences (such as the Lando Norris personal site): strong visual identity, oversized editorial typography, kinetic motion, verified telemetry, architectural storytelling, and interactive browsing.
+A high-performance personal portfolio website for **Saish Sanas**, Software Developer. Designed to highlight core software engineering principles, Java/Spring Boot backend architecture, relational data modeling, distributed event processing, published academic research, and verified credentials.
 
 ---
 
-## ⚡ Tech Stack & Architecture
+## ⚡ Tech Stack
 
-- **Core**: React 19, TypeScript, Vite
-- **Styling**: Tailwind CSS v4, Custom CSS tokens
-- **Animations**: Framer Motion, Kinetic Typography, Smooth Stagger Transitions
+- **Framework & Language**: React 18, TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **Animation**: Framer Motion
 - **Smooth Scroll**: Lenis
-- **Sound FX**: Web Audio API (Synthesized micro-tactile feedback with global mute toggle)
-- **Icons**: Lucide Icons & Custom SVG Monograms
-- **Interactive FX**: Canvas Confetti, Interactive Pipeline Simulator, Terminal Git Log Inspector
+- **Audio Feedback**: Web Audio API (Synthesized micro-tactile sound effects)
+- **Deployment**: GitHub Pages (`gh-pages`)
 
 ---
 
-## 🚀 Key Sections
+## 🚀 Key Sections & Features
 
-1. **01 — Opening / Hero**: Oversized editorial typography (`SAISH SANAS // JAVA BACKEND DEVELOPER`), live IST time telemetry, coordinate crosshairs, and primary CTAs (`VIEW WORK`, `RESUME`).
-2. **02 — Identity & Intent**: Asymmetric editorial layout with architectural philosophy and verified statistics (3 Flagship Architectures, OCI 2025 Associate, Published Research Paper, Zero Dual-Write Data Loss).
-3. **03 — Engineering Stack Console**: Interactive tech stack inspector with categories (Core & Runtime, Data & Persistence, Distributed & Reliability, Interface & Tools) providing concrete technical justifications instead of fake percentage bars.
-4. **04 — Featured Work**: Large-format editorial case studies for:
-   - **CareWave**: Emergency Alert & Real-Time Tracking Platform (Spring Boot, WebSockets, PostgreSQL spatial indexing)
-   - **SaishTask**: Full-Stack Task & Workflow Management Engine (Spring Boot 3, React, Hibernate optimistic locking)
-   - **Transactional Outbox Pattern**: Distributed Event Delivery Engine (ACID dual-insert, PostgreSQL `SELECT FOR UPDATE SKIP LOCKED`, idempotent consumer)
-5. **05 — Architectural Deep Dive Simulator**: Interactive step-by-step pipeline simulator with two switchable modes:
-   - **Transactional Outbox Architecture**
-   - **Spring Boot Request & Transaction Pipeline**
-6. **06 — Authentic Timeline**: Genuine chronological progression covering Computer Engineering degree, enterprise projects, research publication, OCI 2025 certification, and active systems development.
-7. **07 — Verified Credentials**: Oracle Cloud Infrastructure 2025 Certified Foundations Associate (1Z0-1085-25), Published Academic Research Paper, B.E. in Computer Engineering.
-8. **08 — Build Philosophy**: "I BUILD. I TEST. I IMPROVE. I SHIP." with an interactive Git log and Maven test suite terminal window.
-9. **09 — Beyond the Code**: Tactical football strategy & midfield transition parallels, hardware latency and computational physics curiosity.
-10. **10 — Recruiter Desk & Contact**: "LET'S BUILD SOMETHING RELIABLE.", one-click copy email with confetti, interactive mailto generator with preset topics, and in-site printable Resume viewer modal.
+- **Hero / Professional Profile**: High-impact editorial introduction, location telemetry, and quick-action CTAs.
+- **Projects**: In-depth architecture breakdown, engineering decisions, and interactive interface captures.
+- **Certificates**: Verified accreditations (Oracle Cloud Infrastructure 2025, TCS iON AI Foundation, Bachelor of Engineering degree).
+- **Research Publications**: Peer-reviewed scholarly papers published in IRJMETS and IJERSTE.
+- **Resume**: Direct PDF viewer and one-click PDF download for the official resume (`Saish-Sanas-Resume.pdf`).
+- **Contact & Connect**: Directly accessible contact options and fast email dispatch.
+- **Interactive Modals**: Fullscreen modals for Projects, Certificates, Publications, and Resume preview.
+- **Responsive Layout**: Fully responsive across mobile (360px+), tablet, and desktop viewports.
 
 ---
 
-## 🛠️ Local Development
+## 💻 Featured Projects
+
+1. **CareWave** — Emergency Alert & Real-Time Tracking Platform (React Native, Spring Boot, WebSockets, Firebase FCM, PostgreSQL spatial indexing)
+2. **Chronos** — Distributed Temporal State Reconstruction Engine (Java 21, Spring Boot, Event Sourcing, PostgreSQL, Apache Kafka)
+3. **OutBox-Sync** — Transactional Outbox Event Processing Engine (Spring Boot, MySQL, Transactional Outbox Pattern, Lockless Polling Daemon)
+4. **SaishTask** — Full-Stack Task & Workflow Management Platform (Java 21, Spring Boot, PostgreSQL, React, Vite)
+
+---
+
+## 🛠️ Local Development & Build
 
 ```bash
+# Clone the repository
+git clone https://github.com/saishsanas/saish-portfolio.git
+
 # Install dependencies
 npm install
 
-# Start development server
+# Start local development server
 npm run dev
 
 # Build for production
 npm run build
 
-# Preview production build
-npx vite preview
+# Preview production build locally
+npx vite preview --port 4173
 ```
 
 ---
 
-## 📦 Deployment
+## 📦 Deployment Architecture
 
-This project builds to a completely static `dist/` directory and can be deployed directly to:
-- **Vercel**: Import repository and deploy (framework preset: Vite).
-- **Netlify**: Connect repository or drag-and-drop `dist/`.
-- **GitHub Pages**: Build and push `dist/` to `gh-pages` branch.
+The application is built as a static client-side Single Page Application (SPA) using React and Vite. It does not require a backend runtime to serve the website.
+
+```bash
+# Production build
+npm run build
+
+# Deploy dist folder to GitHub Pages
+npx gh-pages -d dist
+```
+
+---
+
+## 🔗 Links & Information
+
+- **Live Website**: [https://saishsanas.github.io/saish-portfolio/](https://saishsanas.github.io/saish-portfolio/)
+- **GitHub Repository**: [https://github.com/saishsanas/saish-portfolio](https://github.com/saishsanas/saish-portfolio)
+- **Developer**: Saish Sanas
+- **Location**: Pune, Maharashtra, India
