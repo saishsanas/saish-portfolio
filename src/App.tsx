@@ -39,11 +39,8 @@ const normalizePath = (path: string) => {
 }
 
 const getBaseHomePath = () => {
-  const pathname = window.location.pathname
-  if (pathname.startsWith('/saish-portfolio')) {
-    return '/saish-portfolio/'
-  }
-  return '/'
+  const base = import.meta.env.BASE_URL || '/'
+  return base.endsWith('/') ? base : base + '/'
 }
 
 const isHomeRoute = (pathname: string) => {
