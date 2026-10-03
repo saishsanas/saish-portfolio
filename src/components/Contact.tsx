@@ -94,7 +94,7 @@ export function Contact({ onOpenResume }: ContactProps) {
         {/* ============================================================ */}
         {/* CONTACT HUB — COMPACT RECOGNIZABLE CHANNELS GRID (6 CARDS)  */}
         {/* ============================================================ */}
-        <div>
+        <div id="contact-options" className="scroll-mt-24 sm:scroll-mt-28">
           <div className="flex items-center justify-between mb-6">
             <span className="font-mono text-xs text-[#8E8A94] uppercase tracking-wider font-bold">
               // INSTANT RECRUITER CONNECT HUB & CHANNELS

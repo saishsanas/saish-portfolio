@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, lazy, Suspense } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, ChevronRight, Terminal } from 'lucide-react'
 import { AudioProvider, useAudioFx } from './hooks/useAudioFx'
@@ -16,12 +16,14 @@ import { BuildPhilosophy } from './components/BuildPhilosophy'
 import { Personality } from './components/Personality'
 import { Contact } from './components/Contact'
 import { Footer } from './components/Footer'
-import { ResumeModal } from './components/ResumeModal'
-import { ProjectModal } from './components/ProjectModal'
-import { CertificateModal } from './components/CertificateModal'
-import { PublicationLightboxModal, LightboxData } from './components/PublicationLightboxModal'
-import { NotFoundPage } from './components/NotFoundPage'
+import { LightboxData } from './components/PublicationLightboxModal'
 import { Project, Credential } from './types'
+
+const ResumeModal = lazy(() => import('./components/ResumeModal').then((m) => ({ default: m.ResumeModal })))
+const ProjectModal = lazy(() => import('./components/ProjectModal').then((m) => ({ default: m.ProjectModal })))
+const CertificateModal = lazy(() => import('./components/CertificateModal').then((m) => ({ default: m.CertificateModal })))
+const PublicationLightboxModal = lazy(() => import('./components/PublicationLightboxModal').then((m) => ({ default: m.PublicationLightboxModal })))
+const NotFoundPage = lazy(() => import('./components/NotFoundPage').then((m) => ({ default: m.NotFoundPage })))
 
 const PANEL_NAMES = [
   'HOME // EXECUTIVE OVERVIEW',
@@ -93,12 +95,18 @@ function PortfolioContent() {
       setDirection(1)
       setActivePanel(4)
     }
-    setTimeout(() => {
-      const contactElement = document.getElementById('contact')
-      if (contactElement) {
-        contactElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
+
+    const start = performance.now()
+    const checkAndScroll = () => {
+      const contactOptions = document.getElementById('contact-options')
+      if (contactOptions) {
+        contactOptions.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      } else if (performance.now() - start < 1000) {
+        requestAnimationFrame(checkAndScroll)
       }
-    }, 80)
+    }
+
+    requestAnimationFrame(checkAndScroll)
   }, [activePanel])
 
   // Keyboard navigation across panels [1-5] and Arrow Keys [← / →]
@@ -142,13 +150,15 @@ function PortfolioContent() {
   // Custom 404 Route handling
   if (currentPath !== '/' && currentPath !== '') {
     return (
-      <NotFoundPage
-        onReturnHome={() => {
-          window.history.pushState({}, '', '/')
-          setCurrentPath('/')
-          setActivePanel(0)
-        }}
-      />
+      <Suspense fallback={null}>
+        <NotFoundPage
+          onReturnHome={() => {
+            window.history.pushState({}, '', '/')
+            setCurrentPath('/')
+            setActivePanel(0)
+          }}
+        />
+      </Suspense>
     )
   }
 
@@ -292,10 +302,12 @@ function PortfolioContent() {
       </footer>
 
       {/* Modals with Focus Trap & Escape key dismissal */}
-      <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
-      <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
-      <CertificateModal credential={selectedCredential} onClose={() => setSelectedCredential(null)} />
-      <PublicationLightboxModal data={selectedArtwork} onClose={() => setSelectedArtwork(null)} />
+      <Suspense fallback={null}>
+        <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
+        <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
+        <CertificateModal credential={selectedCredential} onClose={() => setSelectedCredential(null)} />
+        <PublicationLightboxModal data={selectedArtwork} onClose={() => setSelectedArtwork(null)} />
+      </Suspense>
     </div>
   )
 }
