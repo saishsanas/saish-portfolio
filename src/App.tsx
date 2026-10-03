@@ -33,6 +33,31 @@ const PANEL_NAMES = [
   'CONTACT // RECRUITER DESK & CHANNELS',
 ]
 
+const normalizePath = (path: string) => {
+  const cleanPath = path.split('?')[0].split('#')[0]
+  return cleanPath.replace(/\/+$/, '')
+}
+
+const getBaseHomePath = () => {
+  const pathname = window.location.pathname
+  if (pathname.startsWith('/saish-portfolio')) {
+    return '/saish-portfolio/'
+  }
+  return '/'
+}
+
+const isHomeRoute = (pathname: string) => {
+  const normalized = normalizePath(pathname)
+  const baseNormalized = normalizePath(import.meta.env.BASE_URL || '')
+
+  return (
+    normalized === '' ||
+    normalized === '/' ||
+    normalized === '/saish-portfolio' ||
+    (baseNormalized !== '' && baseNormalized !== '.' && normalized === baseNormalized)
+  )
+}
+
 function PortfolioContent() {
   const { playClick, playHover } = useAudioFx()
   const [activePanel, setActivePanel] = useState(0)
@@ -148,13 +173,14 @@ function PortfolioContent() {
   }, [activePanel, isResumeOpen, selectedProject, selectedCredential, selectedArtwork, handleSelectPanel, playClick])
 
   // Custom 404 Route handling
-  if (currentPath !== '/' && currentPath !== '') {
+  if (!isHomeRoute(currentPath)) {
     return (
       <Suspense fallback={null}>
         <NotFoundPage
           onReturnHome={() => {
-            window.history.pushState({}, '', '/')
-            setCurrentPath('/')
+            const homePath = getBaseHomePath()
+            window.history.pushState({}, '', homePath)
+            setCurrentPath(homePath)
             setActivePanel(0)
           }}
         />
