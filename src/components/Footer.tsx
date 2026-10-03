@@ -1,5 +1,6 @@
 import { ArrowUp } from 'lucide-react'
 import { useAudioFx } from '../hooks/useAudioFx'
+import { getPublicUrl } from '../utils/getPublicUrl'
 
 interface FooterProps {
   onNavigatePanel?: (panelIndex: number) => void
@@ -22,7 +23,7 @@ export function Footer({ onNavigatePanel }: FooterProps) {
         <div className="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
           <div className="flex items-center gap-2.5">
             <img
-              src="/images/saish-photo-passport.jpg"
+              src={getPublicUrl('/images/saish-photo-passport.jpg')}
               alt="Saish Sanas"
               className="w-8 h-8 rounded-full object-cover border border-[#FF056D]/40 shrink-0 grayscale hover:grayscale-0 transition-all duration-300 shadow-sm"
               loading="lazy"

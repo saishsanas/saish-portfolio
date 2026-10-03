@@ -1,4 +1,5 @@
 import { Project } from '../types'
+import { getPublicUrl } from '../utils/getPublicUrl'
 
 export const projects: Project[] = [
   {
@@ -37,12 +38,12 @@ export const projects: Project[] = [
     accentColor: '#FF056D',
     flowDiagramType: 'carewave',
     screenshots: [
-      { title: 'Home Dashboard', src: './carewave/HomeScreen.jpg' },
-      { title: 'One-Tap SOS', src: './carewave/Sos.jpg' },
-      { title: 'Live Location Streaming', src: './carewave/livelocationscreen.jpg' },
-      { title: 'GeoFence Monitoring', src: './carewave/geofencing.jpg' },
-      { title: 'AI Emergency Chatbot', src: './carewave/aichatbot.jpg' },
-      { title: 'Nearby Hospitals', src: './carewave/NearbyHospitalScreen.jpg' },
+      { title: 'Home Dashboard', src: getPublicUrl('carewave/HomeScreen.jpg') },
+      { title: 'One-Tap SOS', src: getPublicUrl('carewave/Sos.jpg') },
+      { title: 'Live Location Streaming', src: getPublicUrl('carewave/livelocationscreen.jpg') },
+      { title: 'GeoFence Monitoring', src: getPublicUrl('carewave/geofencing.jpg') },
+      { title: 'AI Emergency Chatbot', src: getPublicUrl('carewave/aichatbot.jpg') },
+      { title: 'Nearby Hospitals', src: getPublicUrl('carewave/NearbyHospitalScreen.jpg') },
     ]
   },
   {
@@ -80,8 +81,8 @@ export const projects: Project[] = [
     accentColor: '#FF056D',
     flowDiagramType: 'outbox',
     screenshots: [
-      { title: 'Chronos Live Dashboard & Metrics', src: './chronos/chronos-dashboard.png' },
-      { title: 'Temporal Replay & State Inspection', src: './chronos/chronos-temporal-replay.png' },
+      { title: 'Chronos Live Dashboard & Metrics', src: getPublicUrl('chronos/chronos-dashboard.png') },
+      { title: 'Temporal Replay & State Inspection', src: getPublicUrl('chronos/chronos-temporal-replay.png') },
     ]
   },
   {
@@ -160,8 +161,8 @@ export const projects: Project[] = [
     accentColor: '#FF056D',
     flowDiagramType: 'saishtask',
     screenshots: [
-      { title: 'SaishTask Dashboard & List Management', src: './saishtask/homepageSaishTask.png' },
-      { title: 'Create Task & Categorization Workflow', src: './saishtask/create-tasklist.png' },
+      { title: 'SaishTask Dashboard & List Management', src: getPublicUrl('saishtask/homepageSaishTask.png') },
+      { title: 'Create Task & Categorization Workflow', src: getPublicUrl('saishtask/create-tasklist.png') },
     ]
   }
 ]

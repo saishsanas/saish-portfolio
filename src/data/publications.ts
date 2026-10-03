@@ -1,4 +1,5 @@
 import { Publication } from '../types'
+import { getPublicUrl } from '../utils/getPublicUrl'
 
 export const publications: Publication[] = [
   {
@@ -24,8 +25,8 @@ export const publications: Publication[] = [
       'Empirical analysis of alert dispatch latencies across heterogeneous cellular environments'
     ],
     link: 'https://doi.org/10.56726/IRJMETS85227',
-    thumbnailImage: '/publications/irjmets-paper-p1.png',
-    certificateImage: '/publications/irjmets-saish-certificate.png'
+    thumbnailImage: getPublicUrl('/publications/irjmets-paper-p1.png'),
+    certificateImage: getPublicUrl('/publications/irjmets-saish-certificate.png')
   },
   {
     id: 'ijerste-emergency-alert',
@@ -49,7 +50,7 @@ export const publications: Publication[] = [
       'Conducted controlled usability trials evaluating user interaction depth under stress',
       'Evaluated spatial resolution accuracy and dispatch round-trip response intervals'
     ],
-    thumbnailImage: '/publications/ijerste-paper-p1.png',
+    thumbnailImage: getPublicUrl('/publications/ijerste-paper-p1.png'),
     reportedResults: [
       {
         metric: 'Notification Delivery Latency',

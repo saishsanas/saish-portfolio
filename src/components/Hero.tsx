@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { ArrowDown, FileText, ShieldCheck } from 'lucide-react'
 import { useAudioFx } from '../hooks/useAudioFx'
 import { MangaHeroBackground } from './MangaBackgroundAtmosphere'
+import { getPublicUrl } from '../utils/getPublicUrl'
 
 interface HeroProps {
   onOpenResume: () => void
@@ -258,7 +259,7 @@ export function Hero({ onOpenResume, onNavigateWork }: HeroProps) {
                 {/* The Primary Portrait Image with Seamless Bottom Mask */}
                 <div className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-[#090A0C]">
                   <img
-                    src="/images/saish-portrait-cutout.png"
+                    src={getPublicUrl('/images/saish-portrait-cutout.png')}
                     alt="Saish Sanas - Software Developer"
                     className="w-full h-full object-cover object-top contrast-[1.06] brightness-[0.98] saturate-[0.96] group-hover:saturate-105 group-hover:scale-[1.02] transition-all duration-700 select-none"
                     style={{

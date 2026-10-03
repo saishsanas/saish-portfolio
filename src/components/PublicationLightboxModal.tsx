@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ExternalLink, FileText, Award } from 'lucide-react'
 import { useAudioFx } from '../hooks/useAudioFx'
+import { getPublicUrl } from '../utils/getPublicUrl'
 
 export interface LightboxData {
   title: string
@@ -104,7 +105,7 @@ export function PublicationLightboxModal({ data, onClose }: PublicationLightboxM
 
               <div className="rounded-2xl overflow-hidden border border-white/15 bg-white/5 shadow-2xl max-w-3xl">
                 <img
-                  src={data.imageSrc}
+                  src={getPublicUrl(data.imageSrc)}
                   alt={data.title}
                   className="w-full h-auto object-contain max-h-[68vh] select-none"
                 />

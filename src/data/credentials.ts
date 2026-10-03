@@ -1,4 +1,5 @@
 import { Credential } from '../types'
+import { getPublicUrl } from '../utils/getPublicUrl'
 
 export const credentials: Credential[] = [
   {
@@ -7,9 +8,9 @@ export const credentials: Credential[] = [
     issuer: 'Oracle University',
     issuedDate: 'October 31, 2025',
     credentialId: '103057743OCI25FNDCFA',
-    certificateImage: './certificates/oracle-cert-preview.png',
-    badgeImage: './certificates/oracle-badge.jpeg',
-    pdfUrl: './certificates/oracle-cloud-infrastructure-2025-certificate.pdf',
+    certificateImage: getPublicUrl('certificates/oracle-cert-preview.png'),
+    badgeImage: getPublicUrl('certificates/oracle-badge.jpeg'),
+    pdfUrl: getPublicUrl('certificates/oracle-cloud-infrastructure-2025-certificate.pdf'),
     type: 'CERTIFICATION',
     description:
       'Official Oracle accreditation validating foundational understanding of public-cloud principles, OCI core services (compute, storage, networking, identity & access), and cloud-architecture fundamentals.',
@@ -21,7 +22,7 @@ export const credentials: Credential[] = [
     issuer: 'Tata Consultancy Services (TCS iON)',
     issuedDate: '06 Aug 2026 – 21 Aug 2026',
     credentialId: '279243-33346757-1016',
-    certificateImage: './certificates/tcs-cert.png',
+    certificateImage: getPublicUrl('certificates/tcs-cert.png'),
     type: 'CERTIFICATION',
     description:
       'Professional certification demonstrating core competencies in Artificial Intelligence fundamentals, machine learning concepts, data-driven reasoning, and ethical AI deployment principles.',
@@ -33,7 +34,7 @@ export const credentials: Credential[] = [
     issuer: 'Savitribai Phule Pune University',
     issuedDate: '2026 • First Class',
     credentialId: 'SPPU Degree Document Verified',
-    certificateImage: './certificates/degree-certificate-p1.png',
+    certificateImage: getPublicUrl('certificates/degree-certificate-p1.png'),
     type: 'DEGREE',
     description:
       'Comprehensive four-year computer engineering curriculum covering Operating Systems, Database Management Systems, Computer Networks, Data Structures & Algorithms, and Software Engineering. Graduated with First Class distinction.',

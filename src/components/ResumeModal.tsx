@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { X, Printer, Copy, Check, ShieldCheck, BookOpen, GraduationCap, Mail, Phone, MapPin, Briefcase, Cpu } from 'lucide-react'
 import { GithubIcon, LinkedinIcon } from './SocialIcons'
 import { useAudioFx } from '../hooks/useAudioFx'
+import { getPublicUrl } from '../utils/getPublicUrl'
 
 interface ResumeModalProps {
   isOpen: boolean
@@ -231,7 +232,7 @@ FEATURED PROJECTS
 
                 <div className="shrink-0 hidden sm:block">
                   <img
-                    src="/images/saish-photo-passport.jpg"
+                    src={getPublicUrl('images/saish-photo-passport.jpg')}
                     alt="Saish Sanas - Professional Portrait"
                     className="w-20 h-24 object-cover rounded-xl border border-white/20 shadow-md grayscale hover:grayscale-0 transition-all duration-300"
                     loading="lazy"

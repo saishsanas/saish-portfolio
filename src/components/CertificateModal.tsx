@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { X, Download, ExternalLink } from 'lucide-react'
 import { Credential } from '../types'
 import { useAudioFx } from '../hooks/useAudioFx'
+import { getPublicUrl } from '../utils/getPublicUrl'
 
 interface CertificateModalProps {
   credential: Credential | null
@@ -98,7 +99,7 @@ export function CertificateModal({ credential, onClose }: CertificateModalProps)
                   )}
                   {(credential.pdfUrl || credential.certificateImage) && (
                     <a
-                      href={credential.pdfUrl || credential.certificateImage}
+                      href={getPublicUrl(credential.pdfUrl || credential.certificateImage || '')}
                       download
                       target="_blank"
                       rel="noopener noreferrer"
@@ -123,7 +124,7 @@ export function CertificateModal({ credential, onClose }: CertificateModalProps)
               {credential.certificateImage ? (
                 <div className="rounded-2xl overflow-hidden border border-white/15 bg-[#090A0C] p-2 flex items-center justify-center shadow-inner">
                   <img
-                    src={credential.certificateImage}
+                    src={getPublicUrl(credential.certificateImage)}
                     alt={credential.title}
                     className="max-h-[60vh] w-auto object-contain rounded-xl"
                   />

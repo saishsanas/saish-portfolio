@@ -5,6 +5,7 @@ import { GithubIcon, LinkedinIcon, DiscordIcon } from './SocialIcons'
 import confetti from 'canvas-confetti'
 import { useAudioFx } from '../hooks/useAudioFx'
 import { MangaContactBackground } from './MangaBackgroundAtmosphere'
+import { getPublicUrl } from '../utils/getPublicUrl'
 
 interface ContactProps {
   onOpenResume: () => void
@@ -443,7 +444,7 @@ export function Contact({ onOpenResume }: ContactProps) {
               <div className="flex items-center gap-4 pb-4 border-b border-white/10">
                 <div className="relative w-16 h-20 rounded-xl overflow-hidden border border-white/20 shrink-0 bg-black/60 shadow-md">
                   <img
-                    src="./images/saish-photo-passport.jpg"
+                    src={getPublicUrl('images/saish-photo-passport.jpg')}
                     alt="Saish Sanas - Professional Portrait"
                     className="w-full h-full object-cover grayscale contrast-110 hover:grayscale-0 transition-all duration-300"
                     loading="lazy"

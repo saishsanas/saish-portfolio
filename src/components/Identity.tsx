@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Server, Database, GitBranch } from 'lucide-react'
 import { useAudioFx } from '../hooks/useAudioFx'
+import { getPublicUrl } from '../utils/getPublicUrl'
 
 export function Identity() {
   const { playHover } = useAudioFx()
@@ -74,7 +75,7 @@ export function Identity() {
             <div className="p-4 sm:p-5 rounded-2xl bg-[#111216] border border-white/10 hover:border-[#FF056D]/40 transition-all flex flex-col sm:flex-row items-center sm:items-start gap-4">
               <div className="relative w-20 h-24 sm:w-24 sm:h-28 rounded-xl overflow-hidden border border-white/15 shrink-0 bg-black/50 shadow-inner">
                 <img
-                  src="/images/saish-photo-passport.jpg"
+                  src={getPublicUrl('/images/saish-photo-passport.jpg')}
                   alt="Saish Sanas - Identity Verification"
                   className="w-full h-full object-cover grayscale contrast-110 hover:grayscale-0 transition-all duration-300"
                 />

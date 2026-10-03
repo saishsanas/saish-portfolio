@@ -6,6 +6,7 @@ import { projects } from '../data/projects'
 import { Project } from '../types'
 import { useAudioFx } from '../hooks/useAudioFx'
 import { MangaWorkBackground } from './MangaBackgroundAtmosphere'
+import { getPublicUrl } from '../utils/getPublicUrl'
 
 interface FeaturedWorkProps {
   onSelectProject: (project: Project) => void

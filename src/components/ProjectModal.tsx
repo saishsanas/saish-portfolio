@@ -4,6 +4,7 @@ import { X, ArrowUpRight, CheckCircle2, Smartphone, GitBranch } from 'lucide-rea
 import { GithubIcon } from './SocialIcons'
 import { Project } from '../types'
 import { useAudioFx } from '../hooks/useAudioFx'
+import { getPublicUrl } from '../utils/getPublicUrl'
 
 interface ProjectModalProps {
   project: Project | null
@@ -108,7 +109,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                       >
                         <div className={`${project.isMobileApp ? 'aspect-[9/19]' : 'aspect-[16/10]'} rounded-xl overflow-hidden bg-black/60 relative`}>
                           <img
-                            src={s.src}
+                            src={getPublicUrl(s.src)}
                             alt={s.title}
                             className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
                           />
