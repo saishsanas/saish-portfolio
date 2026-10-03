@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="glow1" cx="30%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#FF056D" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#090A0C" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="glow2" cx="80%" cy="30%" r="50%">
+      <stop offset="0%" stop-color="#B8004C" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#090A0C" stop-opacity="0" />
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#090A0C" />
+  <rect width="1200" height="630" fill="url(#grid)" />
+  <rect width="1200" height="630" fill="url(#glow1)" />
+  <rect width="1200" height="630" fill="url(#glow2)" />
+
+  <!-- Outer Frame -->
+  <rect x="30" y="30" width="1140" height="570" rx="24" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1.5" />
+
+  <!-- Corner Accents -->
+  <text x="45" y="55" fill="#FF056D" font-family="monospace" font-size="18" font-weight="bold">+</text>
+  <text x="1145" y="55" fill="#FF056D" font-family="monospace" font-size="18" font-weight="bold" text-anchor="end">+</text>
+  <text x="45" y="585" fill="#FF056D" font-family="monospace" font-size="18" font-weight="bold">+</text>
+  <text x="1145" y="585" fill="#FF056D" font-family="monospace" font-size="18" font-weight="bold" text-anchor="end">+</text>
+
+  <!-- Status Telemetry Top -->
+  <circle cx="70" cy="75" r="5" fill="#FF056D" />
+  <text x="85" y="80" fill="#8E8A94" font-family="monospace" font-size="13" letter-spacing="2">ENGINEERING SPECIFICATION // PORTFOLIO</text>
+  <text x="1130" y="80" fill="#FF056D" font-family="monospace" font-size="13" letter-spacing="2" text-anchor="end">PUNE, INDIA // IST</text>
+
+  <!-- Brandmark Badge -->
+  <rect x="70" y="140" width="52" height="52" rx="12" fill="#15161A" stroke="#202126" stroke-width="1.5" />
+  <text x="96" y="173" fill="#FF056D" font-family="monospace" font-size="22" font-weight="bold" text-anchor="middle">SS</text>
+
+  <!-- Heading -->
+  <text x="70" y="270" fill="#F4EFE6" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="900" letter-spacing="-2">SAISH SANAS</text>
+  <text x="70" y="350" fill="#FF056D" font-family="system-ui, -apple-system, sans-serif" font-size="60" font-weight="900" letter-spacing="-1">SOFTWARE DEVELOPER</text>
+
+  <!-- Subtitle Statement -->
+  <text x="70" y="420" fill="#8E8A94" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="400">Architecting deterministic backend systems, temporal event streams &amp; transactional outbox engines.</text>
+
+  <!-- Tags Bar -->
+  <g transform="translate(70, 480)">
+    <rect x="0" y="0" width="120" height="36" rx="8" fill="#15161A" stroke="rgba(255,255,255,0.1)" />
+    <text x="60" y="23" fill="#F4EFE6" font-family="monospace" font-size="13" text-anchor="middle">JAVA 21</text>
+
+    <rect x="135" y="0" width="160" height="36" rx="8" fill="#15161A" stroke="rgba(255,255,255,0.1)" />
+    <text x="215" y="23" fill="#F4EFE6" font-family="monospace" font-size="13" text-anchor="middle">SPRING BOOT 3</text>
+
+    <rect x="310" y="0" width="150" height="36" rx="8" fill="#15161A" stroke="rgba(255,255,255,0.1)" />
+    <text x="385" y="23" fill="#F4EFE6" font-family="monospace" font-size="13" text-anchor="middle">POSTGRESQL</text>
+
+    <rect x="475" y="0" width="175" height="36" rx="8" fill="#15161A" stroke="rgba(255,255,255,0.1)" />
+    <text x="562" y="23" fill="#F4EFE6" font-family="monospace" font-size="13" text-anchor="middle">EVENT SOURCING</text>
+
+    <rect x="665" y="0" width="185" height="36" rx="8" fill="rgba(255,5,109,0.15)" stroke="#FF056D" />
+    <text x="757" y="23" fill="#FF056D" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">OCI CERTIFIED 2025</text>
+  </g>
+</svg>
