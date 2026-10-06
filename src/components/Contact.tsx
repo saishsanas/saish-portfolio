@@ -212,7 +212,7 @@ export function Contact({ onOpenResume }: ContactProps) {
 
             {/* 3. LinkedIn Card */}
             <a
-              href="https://www.linkedin.com/in/saish-sanas-48932433/"
+              href="https://www.linkedin.com/in/saish-sanas-48932433a/"
               target="_blank"
               rel="noopener noreferrer"
               onClick={playClick}
@@ -239,7 +239,7 @@ export function Contact({ onOpenResume }: ContactProps) {
               </div>
 
               <div className="mt-4 pt-3 border-t border-white/5 font-mono text-[11px] text-[#8E8A94] flex items-center justify-between">
-                <span>saish-sanas-48932433</span>
+                <span>saish-sanas-48932433a</span>
                 <span className="text-[#FF056D] font-bold group-hover:underline">VIEW PROFILE</span>
               </div>
             </a>
